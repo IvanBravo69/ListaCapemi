@@ -34,7 +34,7 @@ namespace ListaCapemi
         public static void Insert(string codigo, string descrip, DateTime lanza, string cate, string oem ,string marca,
             string modelo, string diamE, string diamIn, string largoEx, string largoInt,byte[] foto, int anio, string precio)
         {
-            using (SqlConnection conn = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True"))
+            using (SqlConnection conn = new SqlConnection(Conn))
             {
                 string query = "INSERT INTO ARTICULO([CODIGO],[DESCRIPCION],[LANZAMIENTO],[CATEGORIA],[OEM_],[MARCA],[MODELO]," +
                     "[DIAM_EXT],[DIAM_INT],[LARGO_EXT],[LARGO_INT],[FOTO_ART],[ANIO],[PRECIO])" +
