@@ -11,7 +11,7 @@ namespace ListaCapemi
     {
         public static SqlConnection ObtnerCOnexion()
         {
-            SqlConnection Conn = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
+            SqlConnection Conn = new SqlConnection("Data Source=localhost;Initial Catalog=ListaVenta;Integrated Security=True");
             Conn.Open();
 
             return Conn;
