@@ -76,16 +76,8 @@ namespace ListaCapemi
             DataTable tabla2 = new DataTable();
             adaptador2.Fill(tabla2);
             dgArticulos2.DataSource = tabla2;
-            
-            //metodo obtener foto
-            try
-            {
-                pbA.Image = Image.FromFile(@"F:\Respaldo\Héctor\Fotos\1000.jpg");
-            }
-            catch (Exception)
-            {
-                pbA.Image = Image.FromFile(@"F:\Respaldo\Héctor\Fotos\ImagenNoDisponible.jpg");
-            }
+
+
             //poner la grilla en orden
             DataGridViewColumn column4 = dgArticulos2.Columns[2];
             column4.Width = 250;
@@ -113,15 +105,28 @@ namespace ListaCapemi
         }
         private void ObtenerFoto()
         {
-        
             try
             {
-                pbA.Image = Image.FromFile(@"F:\Respaldo\Héctor\Fotos\" + guardaC + ".jpg");
+                string sql = "select FOTO_ART from ARTICULO WHERE CODIGO='" + guarda + "'";
+                SqlCommand command = new SqlCommand(sql, DBConexion.ObtnerCOnexion());
+                SqlDataAdapter dp = new SqlDataAdapter(command);
+                DataSet ds = new DataSet("ARTICULO");
 
+                byte[] MisDatos = new byte[0];
+
+                dp.Fill(ds, "ARTICULO");
+
+                DataRow myRow = ds.Tables["ARTICULO"].Rows[0];
+
+                MisDatos = (byte[])myRow["FOTO_ART"];
+
+                MemoryStream ms = new MemoryStream(MisDatos);
+
+                pbA.Image = Image.FromStream(ms);
             }
             catch (Exception)
             {
-                pbA.Image = Image.FromFile(@"F:\Respaldo\Héctor\Fotos\ImagenNoDisponible.jpg");
+                
             }
 
         }
