@@ -16,7 +16,7 @@ namespace ListaCapemi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmListaCompleta());
+            Application.Run(new frmPrincipal());
         }
     }
 }
