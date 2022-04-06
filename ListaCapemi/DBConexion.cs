@@ -7,23 +7,29 @@ using System.Threading.Tasks;
 
 namespace ListaCapemi
 {
-    public sealed class DBConexion
+    class DBConexion
     {
         public static SqlConnection ObtnerCOnexion()
         {
-            /*SqlConnection Conn = new SqlConnection("connectionString");
-            Conn.Open();*/
-
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "localhost";
-            builder.InitialCatalog = "ListaVenta";
-
-
-           /* return Conn;*/
-            //Trabajo//Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True
-            //Casa/Data Source=DESKTOP-3MG0KL8;Initial Catalog=ListaVenta;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
+            try
+            {
+                SqlConnection Conn = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
+                Conn.Open();
+                return Conn;
+            }
+            catch
+            {
+                SqlConnection Conn1 = new SqlConnection("Data Source=localhost;Initial Catalog=ListaVenta;Integrated Security=True");
+                Conn1.Open();
+                return Conn1;
+            }
+                
+            
 
         }
+
+
+    
 
     }
 }

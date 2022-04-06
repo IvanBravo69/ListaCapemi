@@ -14,8 +14,9 @@ namespace ListaCapemi
     {
         public static DataTable Cargar()
         {
+
             string query = "SELECT CODIGO FROM ARTICULO";
-            SqlCommand comando = new SqlCommand(query, DBConexion.ObtnerCOnexion());
+            SqlCommand comando = new SqlCommand(query,DBConexion.ObtnerCOnexion());
             SqlDataAdapter adaptador = new SqlDataAdapter();
 
             adaptador.SelectCommand = comando;
@@ -34,13 +35,14 @@ namespace ListaCapemi
         public static void Insert(string codigo, string descrip, DateTime lanza, string cate, string oem ,string marca,
             string modelo, string diamE, string diamIn, string largoEx, string largoInt,byte[] foto, int anio, string precio)
         {
-            using (SqlConnection conn = new SqlConnection(Conn))
+            
             {
+               
                 string query = "INSERT INTO ARTICULO([CODIGO],[DESCRIPCION],[LANZAMIENTO],[CATEGORIA],[OEM_],[MARCA],[MODELO]," +
                     "[DIAM_EXT],[DIAM_INT],[LARGO_EXT],[LARGO_INT],[FOTO_ART],[ANIO],[PRECIO])" +
                     " VALUES(@CODIGO,@DESCRIPCION,@LANZAMIENTO,@CATEGORIA,@OEM_,@MARCA,@MODELO,@DIAM_EXT,@DIAM_INT,@LARGO_EXT," +
                     "@LARGO_IN,@FOTO_ART,@ANIO,@PRECIO)";
-                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlCommand cmd = new SqlCommand(query, DBConexion.ObtnerCOnexion());
 
                 cmd.Parameters.AddWithValue("@CODIGO", codigo);
                 cmd.Parameters.AddWithValue("@DESCRIPCION", descrip);
@@ -58,12 +60,13 @@ namespace ListaCapemi
                 cmd.Parameters.AddWithValue("@PRECIO", precio);
 
 
-                
-                conn.Open();
+
+               
                 try
                 {
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Registro Ingresado con Exito...");
+                    DBConexion.ObtnerCOnexion().Close();
                 }
                 catch (Exception ex)
                 {
