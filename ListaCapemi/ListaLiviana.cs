@@ -38,8 +38,9 @@ namespace ListaCapemi
            this.SetearGrilla();
            this.lblBoton.Hide(); 
            this.textBox1.Hide();
+  
 
-       
+
         }
         private void SetearGrilla()
         {
@@ -47,16 +48,27 @@ namespace ListaCapemi
             column.Width = 70;
             DataGridViewColumn column1 = dgArticulos.Columns[1];
             column1.Width = 630; 
-            DataGridViewColumn column2 = dgArticulos.Columns[2];
-            column2.Width = 100;
+
                     
 
         }
+
+        private void SetearGrilla2()
+        {
+            DataGridViewColumn column4 = dgArticulos2.Columns[2];
+            column4.Width = 250;
+            DataGridViewColumn column5 = dgArticulos2.Columns[0];
+            column5.Width = 130;
+
+
+
+        }
+
         private void grillaUno() {
                                    
             dgArticulos.ReadOnly = true;
-            SqlCommand comando = new SqlCommand("select CODIGO,DESCRIPCION,LANZAMIENTO " +
-                "from ARTICULO WHERE CATEGORIA='Liviano'", DBConexion.ObtnerCOnexion());
+            SqlCommand comando = new SqlCommand("select CODIGO,DESCRIPCION,CATEGORIAS.CATEGORIA from ARTICULO,CATEGORIAS " +
+                "WHERE CATEGORIAS.ID_CATEGORIA=ARTICULO.ID_CATEGORIA AND ID_GRUPO=1", DBConexion.ObtnerCOnexion());
             SqlDataAdapter adaptador = new SqlDataAdapter();
             adaptador.SelectCommand = comando;
             DataTable tabla = new DataTable();
@@ -64,12 +76,12 @@ namespace ListaCapemi
             dgArticulos.DataSource = tabla;
 
             this.metodoApertura();
-                  
+       
 
         }
         private void metodoApertura()
         {
-            string sql = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE CATEGORIA='Liviano' AND CODIGO='1000'";
+            string sql = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=1 AND ID_ARTICULO=1";
             SqlCommand comando2 = new SqlCommand(sql, DBConexion.ObtnerCOnexion());
             SqlDataAdapter adaptador2 = new SqlDataAdapter();
             adaptador2.SelectCommand = comando2;
@@ -78,17 +90,15 @@ namespace ListaCapemi
             dgArticulos2.DataSource = tabla2;
 
 
-            //poner la grilla en orden
-            DataGridViewColumn column4 = dgArticulos2.Columns[2];
-            column4.Width = 250;
-            DataGridViewColumn column5 = dgArticulos2.Columns[0];
-            column5.Width = 130;
+            SetearGrilla2();
+
+            
         }
         private void grillaDos()
         {
             
             dgArticulos2.ReadOnly = true;
-            string sql = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE CATEGORIA='Liviano' AND CODIGO='" + guarda +"'";
+            string sql = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=1  AND CODIGO='" + guarda +"'";
             SqlCommand comando2 = new SqlCommand(sql, DBConexion.ObtnerCOnexion());
             SqlDataAdapter adaptador2 = new SqlDataAdapter();
             adaptador2.SelectCommand = comando2;
@@ -96,12 +106,7 @@ namespace ListaCapemi
             adaptador2.Fill(tabla2);
             dgArticulos2.DataSource = tabla2;
 
-            //propiedades de grilla
-            DataGridViewColumn column4 = dgArticulos2.Columns[2];
-            column4.Width = 250;
-            DataGridViewColumn column5 = dgArticulos2.Columns[0];
-            column5.Width = 130;
-
+            SetearGrilla2();
         }
         private void ObtenerFoto()
         {

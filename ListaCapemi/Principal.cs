@@ -114,8 +114,14 @@ namespace ListaCapemi
         }
         private void btnAdmiArt_Click(object sender, EventArgs e)
         {
-            IngresoArticulo Ing = new IngresoArticulo();
+            frmIngresoArticulo Ing = new frmIngresoArticulo();
             Ing.Show();
+        }
+
+        private void btnLanzamiento_Click(object sender, EventArgs e)
+        {
+            frmLanzamientos lz = new frmLanzamientos();
+            lz.Show();
         }
     }
 }

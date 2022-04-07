@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,8 +48,8 @@ namespace ListaCapemi
 
 
             dgArticulosPesado.ReadOnly = true;
-            SqlCommand comando = new SqlCommand("select CODIGO,DESCRIPCION,LANZAMIENTO " +
-                "from ARTICULO WHERE CATEGORIA='Pesado'", DBConexion.ObtnerCOnexion());
+            SqlCommand comando = new SqlCommand("select CODIGO,DESCRIPCION,CATEGORIAS.CATEGORIA from ARTICULO,CATEGORIAS " +
+                "WHERE CATEGORIAS.ID_CATEGORIA=ARTICULO.ID_CATEGORIA AND ID_GRUPO=2", DBConexion.ObtnerCOnexion());
             SqlDataAdapter adaptador = new SqlDataAdapter();
             adaptador.SelectCommand = comando;
             DataTable tabla = new DataTable();
@@ -63,7 +64,7 @@ namespace ListaCapemi
         private void grillaDosP()
         {
             dgArticulosPesado2.ReadOnly = true;
-            string sql = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE CATEGORIA='Pesado'AND CODIGO='"+guardaP+"'";
+            string sql = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=2 AND CODIGO='" + guardaP+"'";
             SqlCommand comandoPes = new SqlCommand(sql, DBConexion.ObtnerCOnexion());
             SqlDataAdapter adaptadorPes = new SqlDataAdapter();
             adaptadorPes.SelectCommand = comandoPes;
@@ -80,16 +81,26 @@ namespace ListaCapemi
         }
         private void ObtenerFotoP()
         {
-            try
-            {
-                pbPesado.Image = Image.FromFile(@"F:\Respaldo\Héctor\Fotos\" + guardaP + ".jpg");
-            }
-            catch (Exception)
-            {
-                pbPesado.Image = Image.FromFile(@"F:\Respaldo\Héctor\Fotos\ImagenNoDisponible.jpg");
-            }
+            string sql = "select FOTO_ART from ARTICULO WHERE CODIGO='" + guardaP + "'";
+            SqlCommand command = new SqlCommand(sql, DBConexion.ObtnerCOnexion());
+            SqlDataAdapter dp = new SqlDataAdapter(command);
+            DataSet ds = new DataSet("ARTICULO");
 
+            byte[] MisDatos = new byte[0];
+
+            dp.Fill(ds, "ARTICULO");
+
+            DataRow myRow = ds.Tables["ARTICULO"].Rows[0];
+
+            MisDatos = (byte[])myRow["FOTO_ART"];
+
+            MemoryStream ms = new MemoryStream(MisDatos);
+
+            pbPesado.Image = Image.FromStream(ms);
         }
+            
+
+
         private void capturDatoPesado()
         {
 

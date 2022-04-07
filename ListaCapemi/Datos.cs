@@ -32,22 +32,21 @@ namespace ListaCapemi
            
 
         }
-        public static void Insert(string codigo, string descrip, DateTime lanza, string cate, string oem ,string marca,
-            string modelo, string diamE, string diamIn, string largoEx, string largoInt,byte[] foto, int anio, string precio)
+        public static void Insert(string codigo, string descrip, DateTime lanza, string oem ,string marca,
+            string modelo, string diamE, string diamIn, string largoEx, string largoInt,byte[] foto, int anio, string precio,int cate,int grupo)
         {
             
             {
                
-                string query = "INSERT INTO ARTICULO([CODIGO],[DESCRIPCION],[LANZAMIENTO],[CATEGORIA],[OEM_],[MARCA],[MODELO]," +
-                    "[DIAM_EXT],[DIAM_INT],[LARGO_EXT],[LARGO_INT],[FOTO_ART],[ANIO],[PRECIO])" +
-                    " VALUES(@CODIGO,@DESCRIPCION,@LANZAMIENTO,@CATEGORIA,@OEM_,@MARCA,@MODELO,@DIAM_EXT,@DIAM_INT,@LARGO_EXT," +
-                    "@LARGO_IN,@FOTO_ART,@ANIO,@PRECIO)";
+                string query = "INSERT INTO ARTICULO([CODIGO],[DESCRIPCION],[LANZAMIENTO],[OEM_],[MARCA],[MODELO]," +
+                    "[DIAM_EXT],[DIAM_INT],[LARGO_EXT],[LARGO_INT],[FOTO_ART],[ANIO],[PRECIO],[ID_CATEGORIA],[ID_GRUPO])" +
+                    " VALUES(@CODIGO,@DESCRIPCION,@LANZAMIENTO,@OEM_,@MARCA,@MODELO,@DIAM_EXT,@DIAM_INT,@LARGO_EXT," +
+                    "@LARGO_IN,@FOTO_ART,@ANIO,@PRECIO,@CATEGORIA,@GRUPO)";
                 SqlCommand cmd = new SqlCommand(query, DBConexion.ObtnerCOnexion());
 
                 cmd.Parameters.AddWithValue("@CODIGO", codigo);
                 cmd.Parameters.AddWithValue("@DESCRIPCION", descrip);
                 cmd.Parameters.AddWithValue("@LANZAMIENTO", lanza);
-                cmd.Parameters.AddWithValue("@CATEGORIA", cate);
                 cmd.Parameters.AddWithValue("@OEM_", oem);
                 cmd.Parameters.AddWithValue("@MARCA", marca);
                 cmd.Parameters.AddWithValue("@MODELO", modelo);
@@ -58,10 +57,11 @@ namespace ListaCapemi
                 cmd.Parameters.Add("@FOTO_ART", System.Data.SqlDbType.Image).Value = foto;
                 cmd.Parameters.AddWithValue("@ANIO", anio);
                 cmd.Parameters.AddWithValue("@PRECIO", precio);
+                cmd.Parameters.AddWithValue("@CATEGORIA", cate);
+                cmd.Parameters.AddWithValue("@GRUPO", grupo);
 
 
 
-               
                 try
                 {
                     cmd.ExecuteNonQuery();

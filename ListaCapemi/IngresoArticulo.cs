@@ -11,14 +11,62 @@ using System.Windows.Forms;
 
 namespace ListaCapemi
 {
-    public partial class IngresoArticulo : Form
+    public partial class frmIngresoArticulo : Form
     {
-        public IngresoArticulo()
+
+        SqlConnection conexion = new SqlConnection("Data Source=localhost;Initial Catalog=ListaVenta;Integrated Security=True");
+        SqlCommand cmd,cmd1;
+
+        public frmIngresoArticulo()
         {
             InitializeComponent();
             this.cargar();
+            this.cargarCategoria();
+            this.cargarGrupo();
+
+
+        }
+        private void cargarCategoria()
+        {
+
+            cboCategoria.Items.Clear();
+            conexion.Open();
+            cmd = conexion.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT * FROM CATEGORIAS";
+            cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                cboCategoria.Items.Add(dr["CATEGORIA"].ToString());
+            }
+            conexion.Close();
+
         }
 
+        private void cargarGrupo()
+        {
+
+            cboGrupo.Items.Clear();
+            conexion.Open();
+            cmd1 = conexion.CreateCommand();
+            cmd1.CommandType = CommandType.Text;
+            cmd1.CommandText = "SELECT * FROM GRUPO";
+            cmd1.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd1);
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                cboGrupo.Items.Add(dr["GRUPO"].ToString());
+            }
+            conexion.Close();
+
+        }
         private void btnFoto_Click(object sender, EventArgs e)
         {
             OpenFileDialog file = new OpenFileDialog();
@@ -32,7 +80,7 @@ namespace ListaCapemi
         private void cargar()
         {
             string query = "SELECT * FROM ARTICULO";
-            SqlCommand comando = new SqlCommand(query, DBConexion.ObtnerCOnexion());
+            SqlCommand comando = new SqlCommand(query, conexion);
             SqlDataAdapter adaptador = new SqlDataAdapter();
 
             adaptador.SelectCommand = comando;
@@ -41,32 +89,55 @@ namespace ListaCapemi
 
             adaptador.Fill(tabla);
             dtgIngreso.DataSource = tabla;
-       
 
-
-
-
-            /* dtgIngreso.AutoGenerateColumns = false;
-           dtgIngreso.DataSource = Datos.Cargar();*/
-            
-
-           /* foreach (DataGridViewRow row in dtgIngreso.Rows)
-            {
-                row.Height = 100;
-                DataRowView rows = row.DataBoundItem as DataRowView;
-                row.Cells["FOTO_ART"].Value = ((byte[])rows["FOTO_ART"]);
-            }*/
 
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            Datos.Insert(txtCod.Text, txtDesc.Text, Convert.ToDateTime(dtpFecha.Text), txtCate.Text, txtOem.Text, txtMarca.Text,
+            Datos.Insert(txtCod.Text, txtDesc.Text, Convert.ToDateTime(dtpFecha.Text), txtOem.Text, txtMarca.Text,
                 txtModelo.Text, txtDiamE.Text, txtDiamI.Text, txtLargoE.Text, txtLargoI.Text, ConvertImage.ImageToByteArray(pbIngresoArticulo.Image),
-                Convert.ToInt32(txtAño.Text), txtPrecio.Text);
+                Convert.ToInt32(txtAño.Text), txtPrecio.Text, Convert.ToInt32(txtCate.Text), Convert.ToInt32(txtGru.Text));
             this.cargar();
 
         }
 
+        private void cboGrupo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmd1 = new SqlCommand("SELECT * FROM GRUPO where GRUPO = '" + cboGrupo.Text + "'", conexion);
 
+            conexion.Open();
+            cmd1.ExecuteNonQuery();
+            SqlDataReader dr;
+            dr = cmd1.ExecuteReader();
+            while (dr.Read())
+            {
+                string idMaq = (string)dr["ID_GRUPO"].ToString();
+                txtGru.Text = idMaq;
+
+
+            }
+
+            conexion.Close();
+        }
+
+        private void cboCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            cmd = new SqlCommand("SELECT * FROM CATEGORIAS where CATEGORIA = '" + cboCategoria.Text + "'", conexion);
+
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            SqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                string idMaq = (string)dr["ID_CATEGORIA"].ToString();
+                txtCate.Text = idMaq;
+
+
+            }
+
+            conexion.Close();
+        }
     }
 }

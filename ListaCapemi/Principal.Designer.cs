@@ -47,6 +47,7 @@
             this.btnVentas = new System.Windows.Forms.Button();
             this.btnPrueba = new System.Windows.Forms.Button();
             this.btnAdmiArt = new System.Windows.Forms.Button();
+            this.btnLanzamiento = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLiv
@@ -257,6 +258,16 @@
             this.btnAdmiArt.UseVisualStyleBackColor = true;
             this.btnAdmiArt.Click += new System.EventHandler(this.btnAdmiArt_Click);
             // 
+            // btnLanzamiento
+            // 
+            this.btnLanzamiento.Location = new System.Drawing.Point(458, 12);
+            this.btnLanzamiento.Name = "btnLanzamiento";
+            this.btnLanzamiento.Size = new System.Drawing.Size(163, 25);
+            this.btnLanzamiento.TabIndex = 22;
+            this.btnLanzamiento.Text = "Lanzamientos";
+            this.btnLanzamiento.UseVisualStyleBackColor = true;
+            this.btnLanzamiento.Click += new System.EventHandler(this.btnLanzamiento_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,6 +275,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(802, 593);
+            this.Controls.Add(this.btnLanzamiento);
             this.Controls.Add(this.btnAdmiArt);
             this.Controls.Add(this.btnPrueba);
             this.Controls.Add(this.btnVentas);
@@ -309,6 +321,7 @@
         private System.Windows.Forms.Button btnVentas;
         private System.Windows.Forms.Button btnPrueba;
         private System.Windows.Forms.Button btnAdmiArt;
+        private System.Windows.Forms.Button btnLanzamiento;
     }
 }
 
