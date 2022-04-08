@@ -200,7 +200,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::ListaCapemi.Properties.Resources.Fondo2;
+          
             this.ClientSize = new System.Drawing.Size(849, 617);
             this.Controls.Add(this.lblBoton);
             this.Controls.Add(this.pbA);

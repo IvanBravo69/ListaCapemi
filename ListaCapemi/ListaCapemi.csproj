@@ -150,19 +150,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -173,69 +173,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\fondoPr.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LineaLiviana_Azul.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LineaLiviana_Azul1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LineaLiviana_Blanca.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LineaLiviana_Blanco.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LineaLiviana_Invertido.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LineaLiviana_Gris.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LineaPesada_Blanco.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LineaFerro.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\LOGO ISO9999999999.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Fondo.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Fondo1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\elefante-SOLO-BLANCO.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\logo-blanco.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Fondo2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BotonAtras.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\PngItem_642827.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\fondo_Articulos.png" />
-  </ItemGroup>
-  <ItemGroup />
   <ItemGroup Condition="$(VisualStudioVersion) == '15.0'">
     <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTesting, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>$(SSDTUnitTestPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.dll</HintPath>

@@ -22,6 +22,8 @@ namespace ListaCapemi
             lbltextoArticulo.Hide();
             lblLineaPesada.Hide();
             lblLineaLiviana.Hide();
+            btnAdmiArt.Hide();
+            btnVentas.Hide();
             this.CargarCbo();
         }
 

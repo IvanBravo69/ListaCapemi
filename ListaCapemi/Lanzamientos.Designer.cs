@@ -158,7 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ListaCapemi.Properties.Resources.Fondo2;
+            
             this.ClientSize = new System.Drawing.Size(824, 644);
             this.Controls.Add(this.txtLanza);
             this.Controls.Add(this.pbLanza);

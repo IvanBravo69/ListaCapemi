@@ -35,7 +35,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,6 +46,13 @@
             this.btnVentas = new System.Windows.Forms.Button();
             this.btnAdmiArt = new System.Windows.Forms.Button();
             this.btnLanzamiento = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnEmpresa = new System.Windows.Forms.Button();
+            this.btnMensaje = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLiv
@@ -60,9 +66,9 @@
             this.btnLiv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLiv.ForeColor = System.Drawing.Color.Transparent;
             this.btnLiv.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnLiv.Location = new System.Drawing.Point(52, 194);
+            this.btnLiv.Location = new System.Drawing.Point(55, 171);
             this.btnLiv.Name = "btnLiv";
-            this.btnLiv.Size = new System.Drawing.Size(104, 65);
+            this.btnLiv.Size = new System.Drawing.Size(89, 55);
             this.btnLiv.TabIndex = 0;
             this.btnLiv.UseVisualStyleBackColor = false;
             this.btnLiv.Click += new System.EventHandler(this.btnLiv_Click);
@@ -80,9 +86,9 @@
             this.btnPes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPes.ForeColor = System.Drawing.Color.Transparent;
             this.btnPes.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPes.Location = new System.Drawing.Point(52, 298);
+            this.btnPes.Location = new System.Drawing.Point(61, 283);
             this.btnPes.Name = "btnPes";
-            this.btnPes.Size = new System.Drawing.Size(104, 65);
+            this.btnPes.Size = new System.Drawing.Size(76, 52);
             this.btnPes.TabIndex = 1;
             this.btnPes.UseVisualStyleBackColor = false;
             this.btnPes.Click += new System.EventHandler(this.btnPes_Click);
@@ -92,16 +98,16 @@
             // btnFerr
             // 
             this.btnFerr.BackColor = System.Drawing.Color.Transparent;
-            this.btnFerr.BackgroundImage = global::ListaCapemi.Properties.Resources.LineaFerro;
+            this.btnFerr.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFerr.BackgroundImage")));
             this.btnFerr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnFerr.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnFerr.FlatAppearance.BorderSize = 0;
             this.btnFerr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnFerr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFerr.ForeColor = System.Drawing.Color.Transparent;
-            this.btnFerr.Location = new System.Drawing.Point(58, 404);
+            this.btnFerr.Location = new System.Drawing.Point(58, 386);
             this.btnFerr.Name = "btnFerr";
-            this.btnFerr.Size = new System.Drawing.Size(104, 65);
+            this.btnFerr.Size = new System.Drawing.Size(79, 59);
             this.btnFerr.TabIndex = 2;
             this.btnFerr.UseVisualStyleBackColor = false;
             this.btnFerr.MouseLeave += new System.EventHandler(this.btnFerr_MouseLeave);
@@ -109,7 +115,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(407, 194);
+            this.textBox1.Location = new System.Drawing.Point(342, 171);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(188, 20);
             this.textBox1.TabIndex = 4;
@@ -117,7 +123,7 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(407, 352);
+            this.comboBox3.Location = new System.Drawing.Point(342, 406);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(188, 21);
             this.comboBox3.TabIndex = 8;
@@ -125,59 +131,53 @@
             // comboBox4
             // 
             this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(407, 299);
+            this.comboBox4.Location = new System.Drawing.Point(342, 350);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(188, 21);
             this.comboBox4.TabIndex = 7;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(295, 195);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 20);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "BUSCAR :";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(305, 249);
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(249, 239);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 20);
+            this.label3.Size = new System.Drawing.Size(61, 16);
             this.label3.TabIndex = 11;
-            this.label3.Text = "MARCA :";
+            this.label3.Text = "Grupo  :";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(325, 357);
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(264, 410);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 20);
+            this.label4.Size = new System.Drawing.Size(46, 16);
             this.label4.TabIndex = 13;
-            this.label4.Text = "AÑO  :";
+            this.label4.Text = "Año  :";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(294, 303);
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(243, 353);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 20);
+            this.label5.Size = new System.Drawing.Size(64, 16);
             this.label5.TabIndex = 12;
-            this.label5.Text = "MODELO :";
+            this.label5.Text = "Modelo :";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(459, 443);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(142)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Transparent;
+            this.button1.Location = new System.Drawing.Point(597, 406);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 34);
+            this.button1.Size = new System.Drawing.Size(142, 26);
             this.button1.TabIndex = 14;
-            this.button1.Text = "BUSCAR";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "Buscar";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // lbltextoArticulo
             // 
@@ -186,7 +186,7 @@
             this.lbltextoArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbltextoArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltextoArticulo.ForeColor = System.Drawing.Color.White;
-            this.lbltextoArticulo.Location = new System.Drawing.Point(37, 480);
+            this.lbltextoArticulo.Location = new System.Drawing.Point(37, 464);
             this.lbltextoArticulo.Name = "lbltextoArticulo";
             this.lbltextoArticulo.Size = new System.Drawing.Size(31, 13);
             this.lbltextoArticulo.TabIndex = 15;
@@ -199,7 +199,7 @@
             this.lblLineaLiviana.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblLineaLiviana.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLineaLiviana.ForeColor = System.Drawing.Color.White;
-            this.lblLineaLiviana.Location = new System.Drawing.Point(59, 267);
+            this.lblLineaLiviana.Location = new System.Drawing.Point(59, 238);
             this.lblLineaLiviana.Name = "lblLineaLiviana";
             this.lblLineaLiviana.Size = new System.Drawing.Size(31, 13);
             this.lblLineaLiviana.TabIndex = 16;
@@ -212,7 +212,7 @@
             this.lblLineaPesada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblLineaPesada.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLineaPesada.ForeColor = System.Drawing.Color.White;
-            this.lblLineaPesada.Location = new System.Drawing.Point(55, 378);
+            this.lblLineaPesada.Location = new System.Drawing.Point(55, 351);
             this.lblLineaPesada.Name = "lblLineaPesada";
             this.lblLineaPesada.Size = new System.Drawing.Size(31, 13);
             this.lblLineaPesada.TabIndex = 17;
@@ -221,7 +221,7 @@
             // cboMarca
             // 
             this.cboMarca.FormattingEnabled = true;
-            this.cboMarca.Location = new System.Drawing.Point(407, 248);
+            this.cboMarca.Location = new System.Drawing.Point(342, 238);
             this.cboMarca.Name = "cboMarca";
             this.cboMarca.Size = new System.Drawing.Size(188, 21);
             this.cboMarca.TabIndex = 18;
@@ -229,33 +229,117 @@
             // 
             // btnVentas
             // 
-            this.btnVentas.Location = new System.Drawing.Point(627, 83);
+            this.btnVentas.Location = new System.Drawing.Point(597, 287);
             this.btnVentas.Name = "btnVentas";
-            this.btnVentas.Size = new System.Drawing.Size(163, 25);
+            this.btnVentas.Size = new System.Drawing.Size(54, 25);
             this.btnVentas.TabIndex = 19;
-            this.btnVentas.Text = "Administracion de Lista";
+            this.btnVentas.Text = "Lista";
             this.btnVentas.UseVisualStyleBackColor = true;
             this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
             // btnAdmiArt
             // 
-            this.btnAdmiArt.Location = new System.Drawing.Point(458, 83);
+            this.btnAdmiArt.Location = new System.Drawing.Point(597, 230);
             this.btnAdmiArt.Name = "btnAdmiArt";
-            this.btnAdmiArt.Size = new System.Drawing.Size(163, 25);
+            this.btnAdmiArt.Size = new System.Drawing.Size(54, 25);
             this.btnAdmiArt.TabIndex = 21;
-            this.btnAdmiArt.Text = "Administracion de Articulos";
+            this.btnAdmiArt.Text = "Ingreso";
             this.btnAdmiArt.UseVisualStyleBackColor = true;
             this.btnAdmiArt.Click += new System.EventHandler(this.btnAdmiArt_Click);
             // 
             // btnLanzamiento
             // 
-            this.btnLanzamiento.Location = new System.Drawing.Point(458, 12);
+            this.btnLanzamiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(142)))));
+            this.btnLanzamiento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLanzamiento.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLanzamiento.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnLanzamiento.Location = new System.Drawing.Point(597, 168);
             this.btnLanzamiento.Name = "btnLanzamiento";
-            this.btnLanzamiento.Size = new System.Drawing.Size(163, 25);
+            this.btnLanzamiento.Size = new System.Drawing.Size(142, 25);
             this.btnLanzamiento.TabIndex = 22;
             this.btnLanzamiento.Text = "Lanzamientos";
-            this.btnLanzamiento.UseVisualStyleBackColor = true;
+            this.btnLanzamiento.UseVisualStyleBackColor = false;
             this.btnLanzamiento.Click += new System.EventHandler(this.btnLanzamiento_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(342, 294);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(188, 21);
+            this.comboBox1.TabIndex = 24;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(249, 296);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 16);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Marca :";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button2.Location = new System.Drawing.Point(276, 162);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(39, 37);
+            this.button2.TabIndex = 25;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(342, 198);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(153, 13);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Descripcion,marca,modelo,año";
+            // 
+            // btnEmpresa
+            // 
+            this.btnEmpresa.BackColor = System.Drawing.Color.Transparent;
+            this.btnEmpresa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEmpresa.BackgroundImage")));
+            this.btnEmpresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEmpresa.FlatAppearance.BorderSize = 0;
+            this.btnEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmpresa.Location = new System.Drawing.Point(740, 39);
+            this.btnEmpresa.Name = "btnEmpresa";
+            this.btnEmpresa.Size = new System.Drawing.Size(45, 33);
+            this.btnEmpresa.TabIndex = 27;
+            this.btnEmpresa.UseVisualStyleBackColor = false;
+            // 
+            // btnMensaje
+            // 
+            this.btnMensaje.BackColor = System.Drawing.Color.Transparent;
+            this.btnMensaje.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMensaje.BackgroundImage")));
+            this.btnMensaje.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMensaje.FlatAppearance.BorderSize = 0;
+            this.btnMensaje.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMensaje.Location = new System.Drawing.Point(678, 47);
+            this.btnMensaje.Name = "btnMensaje";
+            this.btnMensaje.Size = new System.Drawing.Size(39, 25);
+            this.btnMensaje.TabIndex = 28;
+            this.btnMensaje.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Location = new System.Drawing.Point(616, 39);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(35, 33);
+            this.button3.TabIndex = 29;
+            this.button3.UseVisualStyleBackColor = false;
             // 
             // frmPrincipal
             // 
@@ -263,7 +347,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(802, 593);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnMensaje);
+            this.Controls.Add(this.btnEmpresa);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnLanzamiento);
             this.Controls.Add(this.btnAdmiArt);
             this.Controls.Add(this.btnVentas);
@@ -275,7 +367,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.textBox1);
@@ -295,7 +386,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -309,6 +399,13 @@
         private System.Windows.Forms.Button btnVentas;
         private System.Windows.Forms.Button btnAdmiArt;
         private System.Windows.Forms.Button btnLanzamiento;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnEmpresa;
+        private System.Windows.Forms.Button btnMensaje;
+        private System.Windows.Forms.Button button3;
     }
 }
 
