@@ -107,11 +107,7 @@ namespace ListaCapemi
             frmListaCompleta listaCom = new frmListaCompleta();
             listaCom.Show();
         }
-        private void btnPrueba_Click(object sender, EventArgs e)
-        {
-            FotoArticulo FT = new FotoArticulo();
-            FT.Show();
-        }
+
         private void btnAdmiArt_Click(object sender, EventArgs e)
         {
             frmIngresoArticulo Ing = new frmIngresoArticulo();

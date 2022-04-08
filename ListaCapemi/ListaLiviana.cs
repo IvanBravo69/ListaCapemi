@@ -14,112 +14,99 @@ namespace ListaCapemi
 {
     public partial class frmListaLiviana : Form
     {
-        string guarda;
-        string guardaC;
-        
+        #region Declariacion Variables
+        SqlConnection conn = DBConexion.ObtnerCOnexion();
+        int codigo;
+        string sql, sql1, sql2, sql3,sql4;
+        SqlCommand cmd, cmd1, cmd2, cmd3,cmd4;
+        SqlDataAdapter da, da1, da2, da3,da4;
+        DataTable dt, dt1,dt3;
+        #endregion
+        #region Inicio Programa
         public frmListaLiviana()
         {
             InitializeComponent();
         }
-        //Metodo para cerrar formulario
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        { if (keyData == Keys.Escape)
-            {
-                this.Close(); return true;
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
-
-        }
         private void ListaLiviana_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'listaVentaDataSet.Articulo' Puede moverla o quitarla según sea necesario.
-
+            
            this.grillaUno();
-           this.SetearGrilla();
            this.lblBoton.Hide(); 
            this.textBox1.Hide();
-  
-
-
+           this.metodoApertura();
         }
+        #endregion
+        #region FormatoGrilla
         private void SetearGrilla()
         {
             DataGridViewColumn column = dgArticulos.Columns[0];
             column.Width = 70;
             DataGridViewColumn column1 = dgArticulos.Columns[1];
             column1.Width = 630; 
-
-                    
-
-        }
-
+         }
         private void SetearGrilla2()
         {
             DataGridViewColumn column4 = dgArticulos2.Columns[2];
             column4.Width = 250;
             DataGridViewColumn column5 = dgArticulos2.Columns[0];
             column5.Width = 130;
-
-
-
         }
-
+        #endregion
+        #region Metodos
         private void grillaUno() {
                                    
             dgArticulos.ReadOnly = true;
-            SqlCommand comando = new SqlCommand("select CODIGO,DESCRIPCION,CATEGORIAS.CATEGORIA from ARTICULO,CATEGORIAS " +
-                "WHERE CATEGORIAS.ID_CATEGORIA=ARTICULO.ID_CATEGORIA AND ID_GRUPO=1", DBConexion.ObtnerCOnexion());
-            SqlDataAdapter adaptador = new SqlDataAdapter();
-            adaptador.SelectCommand = comando;
-            DataTable tabla = new DataTable();
-            adaptador.Fill(tabla);
-            dgArticulos.DataSource = tabla;
-
-            this.metodoApertura();
-       
-
-        }
-        private void metodoApertura()
-        {
-            string sql = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=1 AND ID_ARTICULO=1";
-            SqlCommand comando2 = new SqlCommand(sql, DBConexion.ObtnerCOnexion());
-            SqlDataAdapter adaptador2 = new SqlDataAdapter();
-            adaptador2.SelectCommand = comando2;
-            DataTable tabla2 = new DataTable();
-            adaptador2.Fill(tabla2);
-            dgArticulos2.DataSource = tabla2;
-
-
-            SetearGrilla2();
-
-            
+            sql =("select CODIGO,DESCRIPCION,CATEGORIAS.CATEGORIA from ARTICULO,CATEGORIAS " +
+                "WHERE CATEGORIAS.ID_CATEGORIA=ARTICULO.ID_CATEGORIA AND ID_GRUPO=1");
+            cmd = new SqlCommand(sql, conn);
+            da = new SqlDataAdapter(cmd);
+            da.SelectCommand = cmd;
+            dt = new DataTable();
+            da.Fill(dt);
+            dgArticulos.DataSource = dt;
+            this.SetearGrilla();
+                                 
         }
         private void grillaDos()
         {
             
             dgArticulos2.ReadOnly = true;
-            string sql = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=1  AND CODIGO='" + guarda +"'";
-            SqlCommand comando2 = new SqlCommand(sql, DBConexion.ObtnerCOnexion());
-            SqlDataAdapter adaptador2 = new SqlDataAdapter();
-            adaptador2.SelectCommand = comando2;
-            DataTable tabla2 = new DataTable();
-            adaptador2.Fill(tabla2);
-            dgArticulos2.DataSource = tabla2;
+            sql1 = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=1  AND CODIGO='" + codigo + "'";
+            cmd1 = new SqlCommand(sql1, conn);
+            da1 = new SqlDataAdapter();
+            da1.SelectCommand = cmd1;
+            dt1 = new DataTable();
+            da1.Fill(dt1);
+            dgArticulos2.DataSource = dt1;
 
             SetearGrilla2();
+        }
+        private void metodoApertura()
+        {
+
+            sql4 = "select TOP 1 OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=1";
+            cmd4 = new SqlCommand(sql4, conn);
+            da4 = new SqlDataAdapter(cmd4);
+            da4.SelectCommand = cmd4;
+            dt3 = new DataTable();
+            da4.Fill(dt3);
+            dgArticulos2.DataSource = dt3;
+            this.SetearGrilla2();
+            this.ObtenerFoto();
         }
         private void ObtenerFoto()
         {
             try
             {
-                string sql = "select FOTO_ART from ARTICULO WHERE CODIGO='" + guarda + "'";
-                SqlCommand command = new SqlCommand(sql, DBConexion.ObtnerCOnexion());
-                SqlDataAdapter dp = new SqlDataAdapter(command);
+                sql2 = "select FOTO_ART from ARTICULO WHERE CODIGO='" + codigo + "'";
+
+                cmd2 = new SqlCommand(sql2,conn);
+                da2 = new SqlDataAdapter(cmd2);
                 DataSet ds = new DataSet("ARTICULO");
 
                 byte[] MisDatos = new byte[0];
 
-                dp.Fill(ds, "ARTICULO");
+                da2.Fill(ds, "ARTICULO");
 
                 DataRow myRow = ds.Tables["ARTICULO"].Rows[0];
 
@@ -131,60 +118,43 @@ namespace ListaCapemi
             }
             catch (Exception)
             {
-                
-            }
+                DataGridViewRow row = dgArticulos.CurrentRow;
+                int idFoto = Convert.ToInt32(row.Cells["CODIGO"].Value);
 
-        }
-        private void btnVolverLiv_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        private void dgArticulos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                string codigo = this.dgArticulos.SelectedRows[0].Cells[0].Value.ToString();
-                string descrp = this.dgArticulos.SelectedRows[0].Cells[1].Value.ToString();
-                string lanza = this.dgArticulos.SelectedRows[0].Cells[2].Value.ToString();
-                MessageBox.Show(
-                    $"Codigo:{codigo}\nDescripcion:{descrp}\nLanzamiento:{lanza}","Informacion Adicional"
-                    );
-            }
-            catch(Exception)
-            {
-                return;
+                sql3 = "select FOTO_ART from ARTICULO WHERE CODIGO='" + idFoto + "'";
+                cmd3 = new SqlCommand(sql3, conn);
+                da3 = new SqlDataAdapter(cmd3);
+                DataSet ds = new DataSet("ARTICULO");
+                byte[] MisDatos = new byte[0];
+
+                da3.Fill(ds, "ARTICULO");
+
+                DataRow myRow = ds.Tables["ARTICULO"].Rows[0];
+
+                MisDatos = (byte[])myRow["FOTO_ART"];
+
+                MemoryStream ms = new MemoryStream(MisDatos);
+
+                pbA.Image = Image.FromStream(ms);
             }
 
         }
         private void capturDato()
         {
 
-            int contador = 0;
-            guarda = dgArticulos.CurrentCell.Value.ToString();
-            contador = guarda.Length;
-             try
-            {       if (contador >= 4)
-                            {
-                                guardaC = guarda.PadLeft(4, '0');
-                            }
-                else
-                    if(contador==2 | contador == 3)
-                {
-                    guardaC = guarda.PadLeft(4, '0');
-                }
+            DataGridViewRow row = dgArticulos.CurrentRow;
 
-                            {
-                                return;
-                       
-                            } 
-            }
-            catch
-            { 
-                    textBox1.Text = guarda;
-                
-            }
-          
+            codigo = Convert.ToInt32(row.Cells["CODIGO"].Value);
 
+            textBox1.Text = Convert.ToString(codigo);
+
+
+        }
+        #endregion
+        #region Eventos de la Grilla
+        private void btnVolverLiv_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
         private void dgArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -216,5 +186,50 @@ namespace ListaCapemi
                 lblBoton.Hide();
             
         }
+        private void dgArticulos_KeyDown(object sender, KeyEventArgs e)
+        {
+
+
+            
+                DataGridViewRow row = dgArticulos.CurrentRow;
+                codigo = Convert.ToInt32(row.Cells["CODIGO"].Value);
+                textBox1.Text = Convert.ToString(codigo);
+                this.grillaDos();
+                this.ObtenerFoto();
+          
+
+
+        }
+        private void dgArticulos_KeyUp(object sender, KeyEventArgs e)
+        {
+
+                DataGridViewRow row = dgArticulos.CurrentRow;
+                codigo = Convert.ToInt32(row.Cells["CODIGO"].Value);
+                textBox1.Text = Convert.ToString(codigo);
+                this.grillaDos();
+                this.ObtenerFoto();
+
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+
+                DialogResult dialogResult = MessageBox.Show("Esta seguro de cerrar la ventana", "Atencion", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Close();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
+
+
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+
+        }
     }
+        #endregion
 }

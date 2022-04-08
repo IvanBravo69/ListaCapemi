@@ -38,11 +38,9 @@ namespace ListaCapemi
             dgListaCompleta.DataSource = tabla;
 
             DataGridViewColumn column = dgListaCompleta.Columns[0];
-            column.Width = 60;
-
-           DataGridViewColumn column1 = dgListaCompleta.Columns[1];
-            column1.Width = 100;
-
+            column.Width = 70;
+            DataGridViewColumn column1 = dgListaCompleta.Columns[3];
+            column1.Width = 270;
 
 
         }
@@ -58,8 +56,7 @@ namespace ListaCapemi
             dgListaCompleta.ColumnHeadersDefaultCellStyle.Font = new Font(dgListaCompleta.Font, FontStyle.Bold);
 
             dgListaCompleta.Name = "dgListaCompleta";
-            dgListaCompleta.Location = new Point(8, 8);
-            dgListaCompleta.Size = new Size(500, 500);
+      
             
             dgListaCompleta.ColumnHeadersBorderStyle =
                 DataGridViewHeaderBorderStyle.Single;
@@ -69,7 +66,6 @@ namespace ListaCapemi
 
             dgListaCompleta.Columns[0].Name = "CODIGO";
             dgListaCompleta.Columns[1].Name = "FOTO_ART";
-            dgListaCompleta.Columns[1].DefaultCellStyle.Padding = new Padding(Padding.All);
             dgListaCompleta.Columns[2].Name = "OEM_";
             dgListaCompleta.Columns[3].Name = "DESCRIPCION";
             dgListaCompleta.Columns[4].Name = "MARCA";
@@ -78,10 +74,8 @@ namespace ListaCapemi
 
             
 
-            dgListaCompleta.SelectionMode =
-                DataGridViewSelectionMode.FullRowSelect;
-            dgListaCompleta.MultiSelect = false;
-            dgListaCompleta.Dock = DockStyle.Fill;
+
+          
 
 
         }

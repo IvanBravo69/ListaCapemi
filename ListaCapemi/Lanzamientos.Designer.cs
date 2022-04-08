@@ -48,10 +48,14 @@
             // 
             // dtLanza
             // 
+            this.dtLanza.AllowUserToAddRows = false;
+            this.dtLanza.AllowUserToDeleteRows = false;
+            this.dtLanza.AllowUserToResizeColumns = false;
+            this.dtLanza.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dtLanza.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtLanza.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dtLanza.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtLanza.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -71,7 +75,9 @@
             this.dtLanza.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtLanza.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.dtLanza.Location = new System.Drawing.Point(12, 134);
+            this.dtLanza.MultiSelect = false;
             this.dtLanza.Name = "dtLanza";
+            this.dtLanza.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -80,6 +86,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dtLanza.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dtLanza.RowHeadersVisible = false;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dtLanza.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dtLanza.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;

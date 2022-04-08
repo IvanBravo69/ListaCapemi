@@ -13,8 +13,9 @@ namespace ListaCapemi
 {
     public partial class frmIngresoArticulo : Form
     {
-
-        SqlConnection conexion = new SqlConnection("Data Source=localhost;Initial Catalog=ListaVenta;Integrated Security=True");
+        //Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True
+        //Data Source=localhost;Initial Catalog=ListaVenta;Integrated Security=True
+        SqlConnection conexion = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
         SqlCommand cmd,cmd1;
 
         public frmIngresoArticulo()

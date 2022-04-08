@@ -45,7 +45,6 @@
             this.lblLineaPesada = new System.Windows.Forms.Label();
             this.cboMarca = new System.Windows.Forms.ComboBox();
             this.btnVentas = new System.Windows.Forms.Button();
-            this.btnPrueba = new System.Windows.Forms.Button();
             this.btnAdmiArt = new System.Windows.Forms.Button();
             this.btnLanzamiento = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -238,16 +237,6 @@
             this.btnVentas.UseVisualStyleBackColor = true;
             this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
-            // btnPrueba
-            // 
-            this.btnPrueba.Location = new System.Drawing.Point(627, 12);
-            this.btnPrueba.Name = "btnPrueba";
-            this.btnPrueba.Size = new System.Drawing.Size(163, 25);
-            this.btnPrueba.TabIndex = 20;
-            this.btnPrueba.Text = "Prueba foto";
-            this.btnPrueba.UseVisualStyleBackColor = true;
-            this.btnPrueba.Click += new System.EventHandler(this.btnPrueba_Click);
-            // 
             // btnAdmiArt
             // 
             this.btnAdmiArt.Location = new System.Drawing.Point(458, 83);
@@ -277,7 +266,6 @@
             this.ClientSize = new System.Drawing.Size(802, 593);
             this.Controls.Add(this.btnLanzamiento);
             this.Controls.Add(this.btnAdmiArt);
-            this.Controls.Add(this.btnPrueba);
             this.Controls.Add(this.btnVentas);
             this.Controls.Add(this.cboMarca);
             this.Controls.Add(this.lblLineaPesada);
@@ -319,7 +307,6 @@
         protected System.Windows.Forms.Button btnPes;
         private System.Windows.Forms.ComboBox cboMarca;
         private System.Windows.Forms.Button btnVentas;
-        private System.Windows.Forms.Button btnPrueba;
         private System.Windows.Forms.Button btnAdmiArt;
         private System.Windows.Forms.Button btnLanzamiento;
     }

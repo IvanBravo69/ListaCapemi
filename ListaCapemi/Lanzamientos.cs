@@ -78,7 +78,7 @@ namespace ListaCapemi
         }
         private void metodoApertura()
         {
-            string sql = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE LANZAMIENTO BETWEEN '2022-01-01'AND '2022-06-30'";
+            string sql = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_ARTICULO=1";
             SqlCommand comando2 = new SqlCommand(sql, DBConexion.ObtnerCOnexion());
             SqlDataAdapter adaptador2 = new SqlDataAdapter();
             adaptador2.SelectCommand = comando2;
@@ -90,7 +90,7 @@ namespace ListaCapemi
             //poner la grilla en orden
 
 
-            string sql1 = "select FOTO_ART from ARTICULO WHERE LANZAMIENTO='2022-04-06'";
+            string sql1 = "select FOTO_ART from ARTICULO WHERE ID_ARTICULO=1";
             SqlCommand command = new SqlCommand(sql1, DBConexion.ObtnerCOnexion());
             SqlDataAdapter dp = new SqlDataAdapter(command);
             DataSet ds = new DataSet("ARTICULO");

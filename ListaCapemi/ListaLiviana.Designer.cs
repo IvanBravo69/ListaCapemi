@@ -58,10 +58,9 @@
             btnVolverLiv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             btnVolverLiv.ForeColor = System.Drawing.Color.Transparent;
             btnVolverLiv.Image = ((System.Drawing.Image)(resources.GetObject("btnVolverLiv.Image")));
-            btnVolverLiv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            btnVolverLiv.Location = new System.Drawing.Point(739, 47);
+            btnVolverLiv.Location = new System.Drawing.Point(739, 44);
             btnVolverLiv.Name = "btnVolverLiv";
-            btnVolverLiv.Size = new System.Drawing.Size(77, 48);
+            btnVolverLiv.Size = new System.Drawing.Size(61, 58);
             btnVolverLiv.TabIndex = 2;
             btnVolverLiv.UseVisualStyleBackColor = false;
             btnVolverLiv.Click += new System.EventHandler(this.btnVolverLiv_Click);
@@ -111,10 +110,12 @@
             this.dgArticulos.RowTemplate.Height = 20;
             this.dgArticulos.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgArticulos.ShowCellErrors = false;
             this.dgArticulos.Size = new System.Drawing.Size(824, 299);
             this.dgArticulos.TabIndex = 3;
             this.dgArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgArticulos_CellContentClick);
-            this.dgArticulos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgArticulos_CellContentDoubleClick);
+            this.dgArticulos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgArticulos_KeyDown);
+            this.dgArticulos.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgArticulos_KeyUp);
             // 
             // dgArticulos2
             // 
@@ -179,7 +180,7 @@
             this.pbA.Location = new System.Drawing.Point(628, 434);
             this.pbA.Name = "pbA";
             this.pbA.Size = new System.Drawing.Size(209, 174);
-            this.pbA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbA.TabIndex = 8;
             this.pbA.TabStop = false;
             // 
