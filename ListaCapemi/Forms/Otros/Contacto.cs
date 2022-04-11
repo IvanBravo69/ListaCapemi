@@ -17,6 +17,17 @@ namespace ListaCapemi.Forms.Otros
             InitializeComponent();
         }
 
+        private void limpiar()
+        {
+            this.txtNombreContacto.Text = "";
+            this.txtEmailContacto.Text = "";
+            this.txtEmpresaContacto.Text = "";
+            this.txtTelContacto.Text = "";
+            this.txtMensaje.Text = "";
+
+        }
+
+
         private void btnEnviarMail_Click(object sender, EventArgs e)
         {
             System.Net.Mail.MailMessage mmsg = new System.Net.Mail.MailMessage();
@@ -31,10 +42,27 @@ namespace ListaCapemi.Forms.Otros
             mmsg.Body = txtMensaje.Text;
             mmsg.BodyEncoding = System.Text.Encoding.UTF8;
 
+
+
+
             mmsg.From = new System.Net.Mail.MailAddress("ivanbravo1993@gmail.com");
 
             System.Net.Mail.SmtpClient cli = new System.Net.Mail.SmtpClient();
 
+            cli.Credentials = new System.Net.NetworkCredential("ivanbravo1993@gmail.com", "Flor1201.");
+            cli.Port = 587;
+            cli.EnableSsl = true;
+            cli.Host = "smtp.gmail.com";
+            try
+            {
+                cli.Send(mmsg);
+                MessageBox.Show("El mensaje se envio correctamente");
+                limpiar();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Error al enviar");
+            }
         }
     }
 }

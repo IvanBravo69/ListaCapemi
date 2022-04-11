@@ -90,6 +90,7 @@
             // 
             // txtEmailContacto
             // 
+            this.txtEmailContacto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             this.txtEmailContacto.Location = new System.Drawing.Point(139, 152);
             this.txtEmailContacto.Name = "txtEmailContacto";
             this.txtEmailContacto.Size = new System.Drawing.Size(188, 20);

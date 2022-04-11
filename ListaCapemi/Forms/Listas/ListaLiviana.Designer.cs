@@ -51,16 +51,17 @@
             // btnVolverLiv
             // 
             btnVolverLiv.BackColor = System.Drawing.Color.Transparent;
+            btnVolverLiv.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVolverLiv.BackgroundImage")));
+            btnVolverLiv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             btnVolverLiv.FlatAppearance.BorderSize = 0;
             btnVolverLiv.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
             btnVolverLiv.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
             btnVolverLiv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnVolverLiv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             btnVolverLiv.ForeColor = System.Drawing.Color.Transparent;
-            btnVolverLiv.Image = ((System.Drawing.Image)(resources.GetObject("btnVolverLiv.Image")));
-            btnVolverLiv.Location = new System.Drawing.Point(739, 44);
+            btnVolverLiv.Location = new System.Drawing.Point(745, 38);
             btnVolverLiv.Name = "btnVolverLiv";
-            btnVolverLiv.Size = new System.Drawing.Size(61, 58);
+            btnVolverLiv.Size = new System.Drawing.Size(61, 34);
             btnVolverLiv.TabIndex = 2;
             btnVolverLiv.UseVisualStyleBackColor = false;
             btnVolverLiv.Click += new System.EventHandler(this.btnVolverLiv_Click);
@@ -92,7 +93,7 @@
             this.dgArticulos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgArticulos.EnableHeadersVisualStyles = false;
             this.dgArticulos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgArticulos.Location = new System.Drawing.Point(13, 129);
+            this.dgArticulos.Location = new System.Drawing.Point(13, 109);
             this.dgArticulos.Name = "dgArticulos";
             this.dgArticulos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -111,7 +112,7 @@
             this.dgArticulos.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgArticulos.ShowCellErrors = false;
-            this.dgArticulos.Size = new System.Drawing.Size(824, 299);
+            this.dgArticulos.Size = new System.Drawing.Size(824, 326);
             this.dgArticulos.TabIndex = 3;
             this.dgArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgArticulos_CellContentClick);
             this.dgArticulos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgArticulos_KeyDown);
@@ -168,7 +169,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(240, 12);
+            this.textBox1.Location = new System.Drawing.Point(419, 24);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(76, 20);
             this.textBox1.TabIndex = 7;
@@ -200,7 +201,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-          
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(849, 617);
             this.Controls.Add(this.lblBoton);
             this.Controls.Add(this.pbA);
