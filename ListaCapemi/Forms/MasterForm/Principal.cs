@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ListaCapemi.Forms.Otros;
 
 namespace ListaCapemi
 {
@@ -120,6 +121,18 @@ namespace ListaCapemi
         {
             frmLanzamientos lz = new frmLanzamientos();
             lz.Show();
+        }
+
+        private void btnEmpresa_Click(object sender, EventArgs e)
+        {
+            frmEmpresa em = new frmEmpresa();
+            em.Show();
+        }
+
+        private void btnMensaje_Click(object sender, EventArgs e)
+        {
+            frmContacto cont = new frmContacto();
+            cont.Show();
         }
     }
 }

@@ -314,6 +314,7 @@
             this.btnEmpresa.Size = new System.Drawing.Size(45, 33);
             this.btnEmpresa.TabIndex = 27;
             this.btnEmpresa.UseVisualStyleBackColor = false;
+            this.btnEmpresa.Click += new System.EventHandler(this.btnEmpresa_Click);
             // 
             // btnMensaje
             // 
@@ -327,6 +328,7 @@
             this.btnMensaje.Size = new System.Drawing.Size(39, 25);
             this.btnMensaje.TabIndex = 28;
             this.btnMensaje.UseVisualStyleBackColor = false;
+            this.btnMensaje.Click += new System.EventHandler(this.btnMensaje_Click);
             // 
             // button3
             // 

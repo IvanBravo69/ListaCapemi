@@ -88,64 +88,82 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Articulo.cs" />
-    <Compile Include="ConvertImage.cs" />
-    <Compile Include="Datos.cs" />
-    <Compile Include="DBConexion.cs" />
-    <Compile Include="IngresoArticulo.cs">
+    <Compile Include="Clases\Articulo.cs" />
+    <Compile Include="Clases\ConvertImage.cs" />
+    <Compile Include="Clases\Datos.cs" />
+    <Compile Include="Clases\DBConexion.cs" />
+    <Compile Include="Forms\Otros\Contacto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IngresoArticulo.Designer.cs">
+    <Compile Include="Forms\Otros\Contacto.Designer.cs">
+      <DependentUpon>Contacto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Otros\Empresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Otros\Empresa.Designer.cs">
+      <DependentUpon>Empresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Otros\IngresoArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Otros\IngresoArticulo.Designer.cs">
       <DependentUpon>IngresoArticulo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lanzamientos.cs">
+    <Compile Include="Forms\Otros\Lanzamientos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lanzamientos.Designer.cs">
+    <Compile Include="Forms\Otros\Lanzamientos.Designer.cs">
       <DependentUpon>Lanzamientos.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListaCompleta.cs">
+    <Compile Include="Forms\Listas\ListaCompleta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListaCompleta.Designer.cs">
+    <Compile Include="Forms\Listas\ListaCompleta.Designer.cs">
       <DependentUpon>ListaCompleta.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListaPesados.cs">
+    <Compile Include="Forms\Listas\ListaPesados.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListaPesados.Designer.cs">
+    <Compile Include="Forms\Listas\ListaPesados.Designer.cs">
       <DependentUpon>ListaPesados.cs</DependentUpon>
     </Compile>
-    <Compile Include="Principal.cs">
+    <Compile Include="Forms\MasterForm\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Principal.Designer.cs">
+    <Compile Include="Forms\MasterForm\Principal.Designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListaLiviana.cs">
+    <Compile Include="Forms\Listas\ListaLiviana.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListaLiviana.Designer.cs">
+    <Compile Include="Forms\Listas\ListaLiviana.Designer.cs">
       <DependentUpon>ListaLiviana.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="IngresoArticulo.resx">
+    <EmbeddedResource Include="Forms\Otros\Contacto.resx">
+      <DependentUpon>Contacto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Otros\Empresa.resx">
+      <DependentUpon>Empresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Otros\IngresoArticulo.resx">
       <DependentUpon>IngresoArticulo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lanzamientos.resx">
+    <EmbeddedResource Include="Forms\Otros\Lanzamientos.resx">
       <DependentUpon>Lanzamientos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListaCompleta.resx">
+    <EmbeddedResource Include="Forms\Listas\ListaCompleta.resx">
       <DependentUpon>ListaCompleta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListaPesados.resx">
+    <EmbeddedResource Include="Forms\Listas\ListaPesados.resx">
       <DependentUpon>ListaPesados.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Principal.resx">
+    <EmbeddedResource Include="Forms\MasterForm\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListaLiviana.resx">
+    <EmbeddedResource Include="Forms\Listas\ListaLiviana.resx">
       <DependentUpon>ListaLiviana.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
