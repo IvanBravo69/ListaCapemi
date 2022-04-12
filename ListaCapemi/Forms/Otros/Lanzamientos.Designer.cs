@@ -41,7 +41,6 @@
             this.dtLanza = new System.Windows.Forms.DataGridView();
             this.dtLanza1 = new System.Windows.Forms.DataGridView();
             this.pbLanza = new System.Windows.Forms.PictureBox();
-            this.txtLanza = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtLanza)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtLanza1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLanza)).BeginInit();
@@ -96,6 +95,8 @@
             this.dtLanza.Size = new System.Drawing.Size(802, 335);
             this.dtLanza.TabIndex = 0;
             this.dtLanza.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtLanza_CellContentClick);
+            this.dtLanza.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtLanza_KeyDown);
+            this.dtLanza.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dtLanza_KeyUp);
             // 
             // dtLanza1
             // 
@@ -148,20 +149,12 @@
             this.pbLanza.TabIndex = 2;
             this.pbLanza.TabStop = false;
             // 
-            // txtLanza
-            // 
-            this.txtLanza.Location = new System.Drawing.Point(367, 52);
-            this.txtLanza.Name = "txtLanza";
-            this.txtLanza.Size = new System.Drawing.Size(100, 20);
-            this.txtLanza.TabIndex = 3;
-            // 
             // frmLanzamientos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(824, 644);
-            this.Controls.Add(this.txtLanza);
             this.Controls.Add(this.pbLanza);
             this.Controls.Add(this.dtLanza1);
             this.Controls.Add(this.dtLanza);
@@ -173,7 +166,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtLanza1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLanza)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -182,6 +174,5 @@
         private System.Windows.Forms.DataGridView dtLanza;
         private System.Windows.Forms.DataGridView dtLanza1;
         private System.Windows.Forms.PictureBox pbLanza;
-        private System.Windows.Forms.TextBox txtLanza;
     }
 }

@@ -296,6 +296,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(342, 198);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 13);
@@ -375,9 +376,10 @@
             this.Controls.Add(this.btnFerr);
             this.Controls.Add(this.btnPes);
             this.Controls.Add(this.btnLiv);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Principal";
+            this.Text = "Menu Principal";
             this.ResumeLayout(false);
             this.PerformLayout();
 

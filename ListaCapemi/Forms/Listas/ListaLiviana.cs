@@ -29,10 +29,8 @@ namespace ListaCapemi
         }
         private void ListaLiviana_Load(object sender, EventArgs e)
         {
-            
            this.grillaUno();
-           this.lblBoton.Hide(); 
-           this.textBox1.Hide();
+           this.txtVolver.Hide(); 
            this.metodoApertura();
         }
         #endregion
@@ -69,7 +67,6 @@ namespace ListaCapemi
         }
         private void grillaDos()
         {
-            
             dgArticulos2.ReadOnly = true;
             sql1 = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=1  AND CODIGO='" + codigo + "'";
             cmd1 = new SqlCommand(sql1, conn);
@@ -78,12 +75,10 @@ namespace ListaCapemi
             dt1 = new DataTable();
             da1.Fill(dt1);
             dgArticulos2.DataSource = dt1;
-
             SetearGrilla2();
         }
         private void metodoApertura()
         {
-
             sql4 = "select TOP 1 OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=1";
             cmd4 = new SqlCommand(sql4, conn);
             da4 = new SqlDataAdapter(cmd4);
@@ -93,6 +88,7 @@ namespace ListaCapemi
             dgArticulos2.DataSource = dt3;
             this.SetearGrilla2();
             this.ObtenerFoto();
+            this.RegistroTabla();
         }
         private void ObtenerFoto()
         {
@@ -141,15 +137,16 @@ namespace ListaCapemi
         }
         private void capturDato()
         {
-
             DataGridViewRow row = dgArticulos.CurrentRow;
-
             codigo = Convert.ToInt32(row.Cells["CODIGO"].Value);
-
-            textBox1.Text = Convert.ToString(codigo);
-
-
+         }
+        private void RegistroTabla()
+        {
+            int registro=0;
+            registro = dgArticulos.RowCount;
+            txtRegis.Text = registro.ToString(); 
         }
+
         #endregion
         #region Eventos de la Grilla
         private void btnVolverLiv_Click(object sender, EventArgs e)
@@ -176,40 +173,30 @@ namespace ListaCapemi
         private void btnVolverLiv_MouseMove(object sender, MouseEventArgs e)
         {
             
-                lblBoton.Show();
-                lblBoton.Text = "Ir al inicio";
+            txtVolver.Show();
+            txtVolver.Text = "Ir al inicio";
             
         }
         private void btnVolverLiv_MouseLeave(object sender, EventArgs e)
         {
 
-                lblBoton.Hide();
+            txtVolver.Hide();
             
         }
         private void dgArticulos_KeyDown(object sender, KeyEventArgs e)
         {
-
-
-            
                 DataGridViewRow row = dgArticulos.CurrentRow;
                 codigo = Convert.ToInt32(row.Cells["CODIGO"].Value);
-                textBox1.Text = Convert.ToString(codigo);
                 this.grillaDos();
                 this.ObtenerFoto();
-          
-
-
-        }
+          }
         private void dgArticulos_KeyUp(object sender, KeyEventArgs e)
         {
-
                 DataGridViewRow row = dgArticulos.CurrentRow;
                 codigo = Convert.ToInt32(row.Cells["CODIGO"].Value);
-                textBox1.Text = Convert.ToString(codigo);
                 this.grillaDos();
                 this.ObtenerFoto();
-
-        }
+           }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Escape)

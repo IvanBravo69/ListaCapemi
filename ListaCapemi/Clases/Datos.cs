@@ -10,11 +10,16 @@ using System.Configuration;
 
 namespace ListaCapemi
 {
+
+
     class Datos
     {
+
+        
+
         public static DataTable Cargar()
         {
-
+           
             string query = "SELECT CODIGO FROM ARTICULO";
             SqlCommand comando = new SqlCommand(query,DBConexion.ObtnerCOnexion());
             SqlDataAdapter adaptador = new SqlDataAdapter();
@@ -32,6 +37,8 @@ namespace ListaCapemi
            
 
         }
+
+
         public static void Insert(string codigo, string descrip, DateTime lanza, string oem ,string marca,
             string modelo, string diamE, string diamIn, string largoEx, string largoInt,byte[] foto, int anio, string precio,int cate,int grupo)
         {

@@ -14,32 +14,28 @@ namespace ListaCapemi
 {
     public partial class frmLanzamientos : Form
     {
-        string guarda;
-        string guardaC;
-
+        #region Declariacion Variables
+        SqlConnection conn = DBConexion.ObtnerCOnexion();
+        int codigo;
+        string sql, sql1, sql2, sql3;
+        SqlCommand cmd, cmd1,cmd3, cmd4;
+        SqlDataAdapter da, da1,da3, da4;
+        DataTable dt, dt1, dt3;
+        #endregion
+        #region Inicio Programa
         public frmLanzamientos()
         {
             InitializeComponent();
         }
-
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            if (keyData == Keys.Escape)
-            {
-                this.Close(); return true;
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
-
-        }
-
         private void Lanzamientos_Load(object sender, EventArgs e)
         {
             this.grillaUno();
-            this.SetearGrilla1();
-          
-            this.txtLanza.Hide();
-        }
+            this.metodoApertura();
 
+        }
+        
+        #endregion
+        #region Formato Grilla
         private void SetearGrilla1()
         {
             DataGridViewColumn column = dtLanza.Columns[0];
@@ -51,7 +47,6 @@ namespace ListaCapemi
 
 
         }
-
         private void SetearGrilla2()
         {
             DataGridViewColumn column4 = dtLanza1.Columns[0];
@@ -61,65 +56,49 @@ namespace ListaCapemi
 
 
         }
+        #endregion
+        #region Metodos
         private void grillaUno()
         {
 
             dtLanza.ReadOnly = true;
-            SqlCommand comando = new SqlCommand("select CODIGO,DESCRIPCION,LANZAMIENTO from ARTICULO  ORDER BY LANZAMIENTO DESC", DBConexion.ObtnerCOnexion());
-            SqlDataAdapter adaptador = new SqlDataAdapter();
-            adaptador.SelectCommand = comando;
-            DataTable tabla = new DataTable();
-            adaptador.Fill(tabla);
-            dtLanza.DataSource = tabla;
-
-            this.metodoApertura();
+            sql = "select CODIGO,DESCRIPCION,LANZAMIENTO from ARTICULO  ORDER BY LANZAMIENTO DESC";
+            cmd = new SqlCommand(sql, conn);
+            da = new SqlDataAdapter(cmd);
+            da.SelectCommand = cmd;
+            dt = new DataTable();
+            da.Fill(dt);
+            dtLanza.DataSource = dt;
+            this.SetearGrilla1();
 
 
         }
         private void metodoApertura()
         {
-            string sql = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_ARTICULO=1";
-            SqlCommand comando2 = new SqlCommand(sql, DBConexion.ObtnerCOnexion());
-            SqlDataAdapter adaptador2 = new SqlDataAdapter();
-            adaptador2.SelectCommand = comando2;
-            DataTable tabla2 = new DataTable();
-            adaptador2.Fill(tabla2);
-            dtLanza1.DataSource = tabla2;
+            sql1 = "select TOP 1 OEM_,MARCA,MODELO,ANIO from ARTICULO";
+            cmd1 = new SqlCommand(sql1, conn);
+            da1 = new SqlDataAdapter();
+            da1.SelectCommand = cmd1;
+            dt1 = new DataTable();
+            da1.Fill(dt1);
+            dtLanza1.DataSource = dt1;
+
             this.SetearGrilla2();
+            this.ObtenerFoto();
 
-            //poner la grilla en orden
-
-
-            string sql1 = "select FOTO_ART from ARTICULO WHERE ID_ARTICULO=1";
-            SqlCommand command = new SqlCommand(sql1, DBConexion.ObtnerCOnexion());
-            SqlDataAdapter dp = new SqlDataAdapter(command);
-            DataSet ds = new DataSet("ARTICULO");
-
-            byte[] MisDatos = new byte[0];
-
-            dp.Fill(ds, "ARTICULO");
-
-            DataRow myRow = ds.Tables["ARTICULO"].Rows[0];
-
-            MisDatos = (byte[])myRow["FOTO_ART"];
-
-            MemoryStream ms = new MemoryStream(MisDatos);
-
-            pbLanza.Image = Image.FromStream(ms);
         }
         private void grillaDos()
         {
 
             dtLanza1.ReadOnly = true;
-            string sql = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE CODIGO='" + guarda + "'";
-            SqlCommand comando2 = new SqlCommand(sql, DBConexion.ObtnerCOnexion());
-            SqlDataAdapter adaptador2 = new SqlDataAdapter();
-            adaptador2.SelectCommand = comando2;
-            DataTable tabla2 = new DataTable();
-            adaptador2.Fill(tabla2);
-            dtLanza1.DataSource = tabla2;
-
-            //propiedades de grilla
+            sql2 = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE CODIGO='" + codigo + "'";
+            cmd4 = new SqlCommand(sql2, conn);
+            da4 = new SqlDataAdapter(cmd4);
+            da4.SelectCommand = cmd4;
+            dt3 = new DataTable();
+            da4.Fill(dt3);
+            dtLanza1.DataSource = dt3;
+            
             this.SetearGrilla2();
 
         }
@@ -127,8 +106,8 @@ namespace ListaCapemi
         {
             try
             {
-                string sql = "select FOTO_ART from ARTICULO WHERE CODIGO='" + guarda + "'";
-                SqlCommand command = new SqlCommand(sql, DBConexion.ObtnerCOnexion());
+                sql3 = "select FOTO_ART from ARTICULO WHERE CODIGO='" + codigo + "'";
+                SqlCommand command = new SqlCommand(sql3,conn);
                 SqlDataAdapter dp = new SqlDataAdapter(command);
                 DataSet ds = new DataSet("ARTICULO");
 
@@ -146,43 +125,43 @@ namespace ListaCapemi
             }
             catch (Exception)
             {
+                DataGridViewRow row = dtLanza.CurrentRow;
+                int idFoto = Convert.ToInt32(row.Cells["CODIGO"].Value);
 
+                sql3 = "select FOTO_ART from ARTICULO WHERE CODIGO='" + idFoto + "'";
+                cmd3 = new SqlCommand(sql3, conn);
+                da3 = new SqlDataAdapter(cmd3);
+                DataSet ds = new DataSet("ARTICULO");
+                byte[] MisDatos = new byte[0];
+
+                da3.Fill(ds, "ARTICULO");
+
+                DataRow myRow = ds.Tables["ARTICULO"].Rows[0];
+
+                MisDatos = (byte[])myRow["FOTO_ART"];
+
+                MemoryStream ms = new MemoryStream(MisDatos);
+
+                pbLanza.Image = Image.FromStream(ms);
             }
 
         }
-
         private void capturDato()
         {
-
-            int contador = 0;
-            guarda = dtLanza.CurrentCell.Value.ToString();
-            contador = guarda.Length;
-            try
+            DataGridViewRow row = dtLanza.CurrentRow;
+            codigo = Convert.ToInt32(row.Cells["CODIGO"].Value);
+        }
+        #endregion
+        #region Evento Grilla
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
             {
-                if (contador >= 4)
-                {
-                    guardaC = guarda.PadLeft(4, '0');
-                }
-                else
-                if (contador == 2 | contador == 3)
-                {
-                    guardaC = guarda.PadLeft(4, '0');
-                }
-
-                {
-                    return;
-
-                }
+                this.Close(); return true;
             }
-            catch
-            {
-                txtLanza.Text = guarda;
-
-            }
-
+            return base.ProcessCmdKey(ref msg, keyData);
 
         }
-
         private void dtLanza_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -199,5 +178,21 @@ namespace ListaCapemi
                 return;
             }
         }
+        private void dtLanza_KeyDown(object sender, KeyEventArgs e)
+        {
+            DataGridViewRow row = dtLanza.CurrentRow;
+            codigo = Convert.ToInt32(row.Cells["CODIGO"].Value);
+            this.grillaDos();
+            this.ObtenerFoto();
+        }
+        private void dtLanza_KeyUp(object sender, KeyEventArgs e)
+        {
+            DataGridViewRow row = dtLanza.CurrentRow;
+            codigo = Convert.ToInt32(row.Cells["CODIGO"].Value);
+            this.grillaDos();
+            this.ObtenerFoto();
+        }
+        #endregion
+
     }
 }

@@ -14,8 +14,20 @@ namespace ListaCapemi
 {
     public partial class frmListaPesados : Form
     {
-        string guardaP;
 
+        #region Declariacion Variables
+        SqlConnection conn = DBConexion.ObtnerCOnexion();
+        int codigo;
+        string sql,sql1,sql2,sql3;
+        SqlCommand cmd, cmd1,cmd3, cmd4;
+        SqlDataAdapter da, da1,da3, da4;
+        DataTable dt, dt1, dt3;
+
+
+
+
+        #endregion
+        #region Inicio Programa
         public frmListaPesados()
         {
             InitializeComponent();
@@ -24,14 +36,13 @@ namespace ListaCapemi
         private void ListaPesados_Load(object sender, EventArgs e)
         {
             this.grillaUnoP();
-            this.SetearGrilla();
-            txtPesado.Hide();
-       
+
+            this.txtAtrasPes.Hide();
+            this.metodoApertura();
+
         }
-        private void btnVolverLiv_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #endregion
+        #region FormatoGrilla
         private void SetearGrilla()
         {
             DataGridViewColumn column = dgArticulosPesado.Columns[0];
@@ -42,53 +53,64 @@ namespace ListaCapemi
             column2.Width = 100;
 
         }
+        private void SetearGrilla2()
+        {
+            DataGridViewColumn column4 = dgArticulosPesado2.Columns[0];
+            column4.Width = 130;
+            DataGridViewColumn column5 = dgArticulosPesado2.Columns[2];
+            column5.Width = 250;
+        }
+        #endregion
+        #region Metodos
+        private void metodoApertura()
+        {
+            sql = "select TOP 1 OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=2";
+            cmd4 = new SqlCommand(sql, conn);
+            da4 = new SqlDataAdapter(cmd4);
+            da4.SelectCommand = cmd4;
+            dt3 = new DataTable();
+            da4.Fill(dt3);
+            dgArticulosPesado2.DataSource = dt3;
+            this.SetearGrilla2();
+            this.ObtenerFotoP();
+        }
         private void grillaUnoP()
         {
-
-
-
             dgArticulosPesado.ReadOnly = true;
-            SqlCommand comando = new SqlCommand("select CODIGO,DESCRIPCION,CATEGORIAS.CATEGORIA from ARTICULO,CATEGORIAS " +
-                "WHERE CATEGORIAS.ID_CATEGORIA=ARTICULO.ID_CATEGORIA AND ID_GRUPO=2", DBConexion.ObtnerCOnexion());
-            SqlDataAdapter adaptador = new SqlDataAdapter();
-            adaptador.SelectCommand = comando;
-            DataTable tabla = new DataTable();
-            adaptador.Fill(tabla);
-            dgArticulosPesado.DataSource = tabla;
-
-
-
-
-
+            sql1=("select CODIGO,DESCRIPCION,CATEGORIAS.CATEGORIA from ARTICULO,CATEGORIAS " +
+                "WHERE CATEGORIAS.ID_CATEGORIA=ARTICULO.ID_CATEGORIA AND ID_GRUPO=2");
+            cmd = new SqlCommand(sql1, conn);
+            da = new SqlDataAdapter(cmd);
+            da.SelectCommand = cmd;
+            dt = new DataTable();
+            da.Fill(dt);
+            dgArticulosPesado.DataSource = dt;
+            this.SetearGrilla();
         }
         private void grillaDosP()
         {
             dgArticulosPesado2.ReadOnly = true;
-            string sql = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=2 AND CODIGO='" + guardaP+"'";
-            SqlCommand comandoPes = new SqlCommand(sql, DBConexion.ObtnerCOnexion());
-            SqlDataAdapter adaptadorPes = new SqlDataAdapter();
-            adaptadorPes.SelectCommand = comandoPes;
-            DataTable tablaPes = new DataTable();
-            adaptadorPes.Fill(tablaPes);
-            dgArticulosPesado2.DataSource = tablaPes;
-
-            //propiedades de grilla
-            DataGridViewColumn column4 = dgArticulosPesado2.Columns[2];
-            column4.Width = 250;
-            DataGridViewColumn column5 = dgArticulosPesado2.Columns[0];
-            column5.Width = 130;
-
+            sql2 = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=2 AND CODIGO='" + codigo + "'";
+            cmd1 = new SqlCommand(sql2, conn);
+            da1 = new SqlDataAdapter();
+            da1.SelectCommand = cmd1;
+            dt1 = new DataTable();
+            da1.Fill(dt1);
+            dgArticulosPesado2.DataSource = dt1;
+            SetearGrilla2();
         }
         private void ObtenerFotoP()
         {
-            string sql = "select FOTO_ART from ARTICULO WHERE CODIGO='" + guardaP + "'";
-            SqlCommand command = new SqlCommand(sql, DBConexion.ObtnerCOnexion());
-            SqlDataAdapter dp = new SqlDataAdapter(command);
-            DataSet ds = new DataSet("ARTICULO");
+            DataGridViewRow row = dgArticulosPesado.CurrentRow;
+            int idFoto = Convert.ToInt32(row.Cells["CODIGO"].Value);
 
+            sql3 = "select FOTO_ART from ARTICULO WHERE CODIGO='" + idFoto + "'";
+            cmd3 = new SqlCommand(sql3, conn);
+            da3 = new SqlDataAdapter(cmd3);
+            DataSet ds = new DataSet("ARTICULO");
             byte[] MisDatos = new byte[0];
 
-            dp.Fill(ds, "ARTICULO");
+            da3.Fill(ds, "ARTICULO");
 
             DataRow myRow = ds.Tables["ARTICULO"].Rows[0];
 
@@ -97,18 +119,22 @@ namespace ListaCapemi
             MemoryStream ms = new MemoryStream(MisDatos);
 
             pbPesado.Image = Image.FromStream(ms);
+
+
         }
-            
-
-
         private void capturDatoPesado()
         {
-
-            guardaP = dgArticulosPesado.CurrentCell.Value.ToString();
-            txtPesado.Text = guardaP;
+            DataGridViewRow row = dgArticulosPesado.CurrentRow;
+            codigo = Convert.ToInt32(row.Cells["CODIGO"].Value.ToString());
 
 
         }
+        private void btnVolverLiv_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
+        #region Eventos de la Grilla
         private void dgArticulosPesado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -124,5 +150,54 @@ namespace ListaCapemi
                 return;
             }
         }
+        private void btnVolverLiv_MouseLeave(object sender, EventArgs e)
+        {
+            txtAtrasPes.Hide();
+        }
+        private void btnVolverLiv_MouseMove(object sender, MouseEventArgs e)
+        {
+            txtAtrasPes.Show();
+            txtAtrasPes.Text = "Ir al inicio";
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        
+{
+            if (keyData == Keys.Escape)
+            {
+
+                DialogResult dialogResult = MessageBox.Show("Esta seguro de cerrar la ventana", "Atencion", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Close();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //do something else
+                }
+
+
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+           
+        }
+        private void dgArticulosPesado_KeyDown(object sender, KeyEventArgs e)
+        {
+            DataGridViewRow row = dgArticulosPesado.CurrentRow;
+            codigo = Convert.ToInt32(row.Cells["CODIGO"].Value);
+
+            this.grillaDosP();
+            this.ObtenerFotoP();
+        }
+        private void dgArticulosPesado_KeyUp(object sender, KeyEventArgs e)
+        {
+            DataGridViewRow row = dgArticulosPesado.CurrentRow;
+            codigo = Convert.ToInt32(row.Cells["CODIGO"].Value);
+
+            this.grillaDosP();
+            this.ObtenerFotoP();
+
+        }
+        #endregion
+
     }
 }

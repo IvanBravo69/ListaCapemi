@@ -39,9 +39,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgArticulos = new System.Windows.Forms.DataGridView();
             this.dgArticulos2 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pbA = new System.Windows.Forms.PictureBox();
             this.lblBoton = new System.Windows.Forms.Label();
+            this.txtVolver = new System.Windows.Forms.Label();
+            this.txtRegis = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             btnVolverLiv = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgArticulos2)).BeginInit();
@@ -112,7 +114,7 @@
             this.dgArticulos.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgArticulos.ShowCellErrors = false;
-            this.dgArticulos.Size = new System.Drawing.Size(824, 326);
+            this.dgArticulos.Size = new System.Drawing.Size(824, 303);
             this.dgArticulos.TabIndex = 3;
             this.dgArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgArticulos_CellContentClick);
             this.dgArticulos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgArticulos_KeyDown);
@@ -167,13 +169,6 @@
             this.dgArticulos2.Size = new System.Drawing.Size(609, 174);
             this.dgArticulos2.TabIndex = 4;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(419, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(76, 20);
-            this.textBox1.TabIndex = 7;
-            // 
             // pbA
             // 
             this.pbA.BackColor = System.Drawing.Color.Transparent;
@@ -196,6 +191,37 @@
             this.lblBoton.TabIndex = 9;
             this.lblBoton.Text = "...........";
             // 
+            // txtVolver
+            // 
+            this.txtVolver.AutoSize = true;
+            this.txtVolver.BackColor = System.Drawing.Color.Transparent;
+            this.txtVolver.ForeColor = System.Drawing.Color.White;
+            this.txtVolver.Location = new System.Drawing.Point(756, 78);
+            this.txtVolver.Name = "txtVolver";
+            this.txtVolver.Size = new System.Drawing.Size(46, 13);
+            this.txtVolver.TabIndex = 10;
+            this.txtVolver.Text = ".............";
+            // 
+            // txtRegis
+            // 
+            this.txtRegis.AutoSize = true;
+            this.txtRegis.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegis.Location = new System.Drawing.Point(686, 415);
+            this.txtRegis.Name = "txtRegis";
+            this.txtRegis.Size = new System.Drawing.Size(14, 16);
+            this.txtRegis.TabIndex = 11;
+            this.txtRegis.Text = "..";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(697, 415);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 16);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "registros encontrados ";
+            // 
             // frmListaLiviana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -203,15 +229,18 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(849, 617);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtRegis);
+            this.Controls.Add(this.txtVolver);
             this.Controls.Add(this.lblBoton);
             this.Controls.Add(this.pbA);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dgArticulos2);
             this.Controls.Add(this.dgArticulos);
             this.Controls.Add(btnVolverLiv);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListaLiviana";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ListaLiviana";
+            this.Text = "Lista Liviana";
             this.Load += new System.EventHandler(this.ListaLiviana_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgArticulos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgArticulos2)).EndInit();
@@ -226,8 +255,10 @@
        
         private System.Windows.Forms.DataGridView dgArticulos;
         private System.Windows.Forms.DataGridView dgArticulos2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pbA;
         private System.Windows.Forms.Label lblBoton;
+        private System.Windows.Forms.Label txtVolver;
+        private System.Windows.Forms.Label txtRegis;
+        private System.Windows.Forms.Label label2;
     }
 }
