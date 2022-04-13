@@ -41,6 +41,8 @@
             this.pbPesado = new System.Windows.Forms.PictureBox();
             this.dgArticulosPesado2 = new System.Windows.Forms.DataGridView();
             this.txtAtrasPes = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtRegisP = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgArticulosPesado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPesado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgArticulosPesado2)).BeginInit();
@@ -184,6 +186,26 @@
             this.txtAtrasPes.TabIndex = 13;
             this.txtAtrasPes.Text = "..............";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(687, 410);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 16);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "registros encontrados ";
+            // 
+            // txtRegisP
+            // 
+            this.txtRegisP.AutoSize = true;
+            this.txtRegisP.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegisP.Location = new System.Drawing.Point(676, 410);
+            this.txtRegisP.Name = "txtRegisP";
+            this.txtRegisP.Size = new System.Drawing.Size(14, 16);
+            this.txtRegisP.TabIndex = 14;
+            this.txtRegisP.Text = "..";
+            // 
             // frmListaPesados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,6 +213,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(848, 625);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtRegisP);
             this.Controls.Add(this.txtAtrasPes);
             this.Controls.Add(this.pbPesado);
             this.Controls.Add(this.dgArticulosPesado2);
@@ -215,5 +239,7 @@
         private System.Windows.Forms.PictureBox pbPesado;
         private System.Windows.Forms.DataGridView dgArticulosPesado2;
         private System.Windows.Forms.Label txtAtrasPes;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label txtRegisP;
     }
 }

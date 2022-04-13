@@ -73,6 +73,7 @@ namespace ListaCapemi
             dgArticulosPesado2.DataSource = dt3;
             this.SetearGrilla2();
             this.ObtenerFotoP();
+            this.RegistroTabla();
         }
         private void grillaUnoP()
         {
@@ -128,6 +129,12 @@ namespace ListaCapemi
             codigo = Convert.ToInt32(row.Cells["CODIGO"].Value.ToString());
 
 
+        }
+        private void RegistroTabla()
+        {
+            int registro =0;
+            registro = dgArticulosPesado.RowCount-1;
+            txtRegisP.Text = registro.ToString();
         }
         private void btnVolverLiv_Click(object sender, EventArgs e)
         {
