@@ -14,8 +14,8 @@ namespace ListaCapemi
 {
     public partial class frmPrincipal : Form
     {
+        SqlConnection conexion = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
 
-       
 
         public frmPrincipal()
         {
@@ -23,9 +23,11 @@ namespace ListaCapemi
             lbltextoArticulo.Hide();
             lblLineaPesada.Hide();
             lblLineaLiviana.Hide();
-            btnAdmiArt.Hide();
+           // btnAdmiArt.Hide();
             btnVentas.Hide();
-            this.CargarCbo();
+           // this.CargarCbo();
+            this.cargarGrupo();
+       
         }
 
         private void CargarCbo()
@@ -35,7 +37,7 @@ namespace ListaCapemi
             SqlDataReader registro_Clave = comando_Clave.ExecuteReader();
             while (registro_Clave.Read())
             {
-                cboMarca.Items.Add(registro_Clave["MARCA"]).ToString();
+                cboGrupo.Items.Add(registro_Clave["MARCA"]).ToString();
               
 
             }
@@ -93,17 +95,45 @@ namespace ListaCapemi
             lblLineaPesada.Show();
             lblLineaPesada.Text = "LINEA PESADA";
         }
+        private void cargarGrupo()
+        {
+
+            cboGrupo.Items.Clear();
+            conexion.Open();
+            SqlCommand cmd = conexion.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "SELECT * FROM GRUPO";
+            cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                cboGrupo.Items.Add(dr["GRUPO"].ToString());
+            }
+            conexion.Close();
+
+        }
+
         private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-           DataSet ds = new DataSet();
-            //indicamos la consulta en SQL y conexion sql
-            SqlDataAdapter da = new SqlDataAdapter("SELECT MARCA FROM ARTICULO", DBConexion.ObtnerCOnexion());
-            //se indica el nombre de la tabla
-            da.Fill(ds, "ARTICULO");
-            cboMarca.DataSource = ds.Tables[0].DefaultView;
-            //se especifica el campo de la tabla
-            cboMarca.ValueMember = "MARCA";
+            SqlCommand cmd1 = new SqlCommand("SELECT * FROM GRUPO where GRUPO = '" + cboGrupo.Text + "'", conexion);
+
+            conexion.Open();
+            cmd1.ExecuteNonQuery();
+            SqlDataReader dr = cmd1.ExecuteReader();
+            while (dr.Read())
+            {
+                string idMaq = (string)dr["ID_GRUPO"].ToString();
+                txtGrupo.Text = idMaq;
+
+
+            }
+
+            conexion.Close();
+
         }
         private void btnVentas_Click(object sender, EventArgs e)
         {
@@ -133,6 +163,11 @@ namespace ListaCapemi
         {
             frmContacto cont = new frmContacto();
             cont.Show();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

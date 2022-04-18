@@ -16,7 +16,7 @@ namespace ListaCapemi
         //Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True
         //Data Source=localhost;Initial Catalog=ListaVenta;Integrated Security=True
         SqlConnection conexion = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
-        SqlCommand cmd,cmd1;
+        SqlCommand cmd,cmd1,cmd2;
 
         public frmIngresoArticulo()
         {
@@ -24,7 +24,7 @@ namespace ListaCapemi
             this.cargar();
             this.cargarCategoria();
             this.cargarGrupo();
-
+            this.cargarMarca();
 
         }
         private void cargarCategoria()
@@ -47,7 +47,26 @@ namespace ListaCapemi
             conexion.Close();
 
         }
+        private void cargarMarca()
+        {
 
+            cboMarca.Items.Clear();
+            conexion.Open();
+            cmd2 = conexion.CreateCommand();
+            cmd2.CommandType = CommandType.Text;
+            cmd2.CommandText = "SELECT * FROM MARCA";
+            cmd2.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd2);
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                cboMarca.Items.Add(dr["MARCA"].ToString());
+            }
+            conexion.Close();
+
+        }
         private void cargarGrupo()
         {
 
@@ -114,6 +133,25 @@ namespace ListaCapemi
             {
                 string idMaq = (string)dr["ID_GRUPO"].ToString();
                 txtGru.Text = idMaq;
+
+
+            }
+
+            conexion.Close();
+        }
+
+        private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmd = new SqlCommand("SELECT * FROM MARCA where MARCA = '" + cboCategoria.Text + "'", conexion);
+
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            SqlDataReader dr;
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                string idMaq = (string)dr["ID_MARCA"].ToString();
+                txtMarca.Text = idMaq;
 
 
             }

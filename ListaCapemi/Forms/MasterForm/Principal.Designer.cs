@@ -32,7 +32,7 @@
             this.btnLiv = new System.Windows.Forms.Button();
             this.btnPes = new System.Windows.Forms.Button();
             this.btnFerr = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBuscarArticulo = new System.Windows.Forms.TextBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,17 +42,19 @@
             this.lbltextoArticulo = new System.Windows.Forms.Label();
             this.lblLineaLiviana = new System.Windows.Forms.Label();
             this.lblLineaPesada = new System.Windows.Forms.Label();
-            this.cboMarca = new System.Windows.Forms.ComboBox();
+            this.cboGrupo = new System.Windows.Forms.ComboBox();
             this.btnVentas = new System.Windows.Forms.Button();
             this.btnAdmiArt = new System.Windows.Forms.Button();
             this.btnLanzamiento = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboMarca = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnEmpresa = new System.Windows.Forms.Button();
             this.btnMensaje = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.txtGrupo = new System.Windows.Forms.TextBox();
+            this.txtMarca = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnLiv
@@ -113,12 +115,12 @@
             this.btnFerr.MouseLeave += new System.EventHandler(this.btnFerr_MouseLeave);
             this.btnFerr.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnFerr_MouseMove);
             // 
-            // textBox1
+            // txtBuscarArticulo
             // 
-            this.textBox1.Location = new System.Drawing.Point(342, 171);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(188, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtBuscarArticulo.Location = new System.Drawing.Point(342, 171);
+            this.txtBuscarArticulo.Name = "txtBuscarArticulo";
+            this.txtBuscarArticulo.Size = new System.Drawing.Size(188, 20);
+            this.txtBuscarArticulo.TabIndex = 4;
             // 
             // comboBox3
             // 
@@ -218,14 +220,14 @@
             this.lblLineaPesada.TabIndex = 17;
             this.lblLineaPesada.Text = "......";
             // 
-            // cboMarca
+            // cboGrupo
             // 
-            this.cboMarca.FormattingEnabled = true;
-            this.cboMarca.Location = new System.Drawing.Point(342, 238);
-            this.cboMarca.Name = "cboMarca";
-            this.cboMarca.Size = new System.Drawing.Size(188, 21);
-            this.cboMarca.TabIndex = 18;
-            this.cboMarca.SelectedIndexChanged += new System.EventHandler(this.cboMarca_SelectedIndexChanged);
+            this.cboGrupo.FormattingEnabled = true;
+            this.cboGrupo.Location = new System.Drawing.Point(342, 238);
+            this.cboGrupo.Name = "cboGrupo";
+            this.cboGrupo.Size = new System.Drawing.Size(188, 21);
+            this.cboGrupo.TabIndex = 18;
+            this.cboGrupo.SelectedIndexChanged += new System.EventHandler(this.cboMarca_SelectedIndexChanged);
             // 
             // btnVentas
             // 
@@ -261,13 +263,14 @@
             this.btnLanzamiento.UseVisualStyleBackColor = false;
             this.btnLanzamiento.Click += new System.EventHandler(this.btnLanzamiento_Click);
             // 
-            // comboBox1
+            // cboMarca
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(342, 294);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(188, 21);
-            this.comboBox1.TabIndex = 24;
+            this.cboMarca.FormattingEnabled = true;
+            this.cboMarca.Location = new System.Drawing.Point(342, 294);
+            this.cboMarca.Name = "cboMarca";
+            this.cboMarca.Size = new System.Drawing.Size(188, 21);
+            this.cboMarca.TabIndex = 24;
+            this.cboMarca.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -344,6 +347,20 @@
             this.button3.TabIndex = 29;
             this.button3.UseVisualStyleBackColor = false;
             // 
+            // txtGrupo
+            // 
+            this.txtGrupo.Location = new System.Drawing.Point(537, 238);
+            this.txtGrupo.Name = "txtGrupo";
+            this.txtGrupo.Size = new System.Drawing.Size(24, 20);
+            this.txtGrupo.TabIndex = 30;
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.Location = new System.Drawing.Point(537, 294);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(24, 20);
+            this.txtMarca.TabIndex = 31;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,17 +369,19 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(802, 593);
+            this.Controls.Add(this.txtMarca);
+            this.Controls.Add(this.txtGrupo);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnMensaje);
             this.Controls.Add(this.btnEmpresa);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboMarca);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnLanzamiento);
             this.Controls.Add(this.btnAdmiArt);
             this.Controls.Add(this.btnVentas);
-            this.Controls.Add(this.cboMarca);
+            this.Controls.Add(this.cboGrupo);
             this.Controls.Add(this.lblLineaPesada);
             this.Controls.Add(this.lblLineaLiviana);
             this.Controls.Add(this.lbltextoArticulo);
@@ -372,7 +391,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBuscarArticulo);
             this.Controls.Add(this.btnFerr);
             this.Controls.Add(this.btnPes);
             this.Controls.Add(this.btnLiv);
@@ -387,7 +406,7 @@
 
         #endregion
         private System.Windows.Forms.Button btnFerr;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBuscarArticulo;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label3;
@@ -399,17 +418,19 @@
         private System.Windows.Forms.Label lblLineaLiviana;
         private System.Windows.Forms.Label lblLineaPesada;
         protected System.Windows.Forms.Button btnPes;
-        private System.Windows.Forms.ComboBox cboMarca;
+        private System.Windows.Forms.ComboBox cboGrupo;
         private System.Windows.Forms.Button btnVentas;
         private System.Windows.Forms.Button btnAdmiArt;
         private System.Windows.Forms.Button btnLanzamiento;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboMarca;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEmpresa;
         private System.Windows.Forms.Button btnMensaje;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtGrupo;
+        private System.Windows.Forms.TextBox txtMarca;
     }
 }
 

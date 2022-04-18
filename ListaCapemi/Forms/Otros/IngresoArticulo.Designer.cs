@@ -45,7 +45,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtModelo = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtMarca = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtAño = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -63,6 +62,9 @@
             this.label15 = new System.Windows.Forms.Label();
             this.txtCate = new System.Windows.Forms.TextBox();
             this.txtGru = new System.Windows.Forms.TextBox();
+            this.cboMarca = new System.Windows.Forms.ComboBox();
+            this.btnAgregarMarca = new System.Windows.Forms.Button();
+            this.txtMarca = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbIngresoArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgIngreso)).BeginInit();
             this.SuspendLayout();
@@ -258,16 +260,6 @@
             this.label9.TabIndex = 13;
             this.label9.Text = "MODELO :";
             // 
-            // txtMarca
-            // 
-            this.txtMarca.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMarca.Location = new System.Drawing.Point(111, 267);
-            this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(116, 20);
-            this.txtMarca.TabIndex = 12;
-            // 
             // label10
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -461,11 +453,48 @@
             this.txtGru.Size = new System.Drawing.Size(48, 20);
             this.txtGru.TabIndex = 37;
             // 
+            // cboMarca
+            // 
+            this.cboMarca.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboMarca.FormattingEnabled = true;
+            this.cboMarca.Location = new System.Drawing.Point(111, 270);
+            this.cboMarca.Name = "cboMarca";
+            this.cboMarca.Size = new System.Drawing.Size(116, 21);
+            this.cboMarca.TabIndex = 38;
+            this.cboMarca.SelectedIndexChanged += new System.EventHandler(this.cboMarca_SelectedIndexChanged);
+            // 
+            // btnAgregarMarca
+            // 
+            this.btnAgregarMarca.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarMarca.Location = new System.Drawing.Point(233, 270);
+            this.btnAgregarMarca.Name = "btnAgregarMarca";
+            this.btnAgregarMarca.Size = new System.Drawing.Size(30, 24);
+            this.btnAgregarMarca.TabIndex = 39;
+            this.btnAgregarMarca.Text = "+";
+            this.btnAgregarMarca.UseVisualStyleBackColor = true;
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMarca.Location = new System.Drawing.Point(165, 354);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(48, 20);
+            this.txtMarca.TabIndex = 40;
+            // 
             // frmIngresoArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(533, 733);
+            this.Controls.Add(this.txtMarca);
+            this.Controls.Add(this.btnAgregarMarca);
+            this.Controls.Add(this.cboMarca);
             this.Controls.Add(this.txtGru);
             this.Controls.Add(this.txtCate);
             this.Controls.Add(this.cboGrupo);
@@ -490,7 +519,6 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtModelo);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtOem);
             this.Controls.Add(this.label5);
@@ -530,7 +558,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtAño;
         private System.Windows.Forms.Label label11;
@@ -548,5 +575,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtCate;
         private System.Windows.Forms.TextBox txtGru;
+        private System.Windows.Forms.ComboBox cboMarca;
+        private System.Windows.Forms.Button btnAgregarMarca;
+        private System.Windows.Forms.TextBox txtMarca;
     }
 }
