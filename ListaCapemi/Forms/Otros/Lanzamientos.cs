@@ -75,7 +75,7 @@ namespace ListaCapemi
         }
         private void metodoApertura()
         {
-            sql1 = "select TOP 1 OEM_,MARCA,MODELO,ANIO from ARTICULO";
+            sql1 = "select TOP 1 OEM_,MODELO,ANIO from ARTICULO";
             cmd1 = new SqlCommand(sql1, conn);
             da1 = new SqlDataAdapter();
             da1.SelectCommand = cmd1;

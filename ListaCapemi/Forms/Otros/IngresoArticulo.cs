@@ -16,7 +16,7 @@ namespace ListaCapemi
         //Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True
         //Data Source=localhost;Initial Catalog=ListaVenta;Integrated Security=True
         SqlConnection conexion = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
-        SqlCommand cmd,cmd1,cmd2;
+        SqlCommand cmd,cmd1,cmd2,cmd3,cmd4,cmd5;
 
         public frmIngresoArticulo()
         {
@@ -26,6 +26,17 @@ namespace ListaCapemi
             this.cargarGrupo();
             this.cargarMarca();
 
+        }
+        #region Metodos
+        private void cargar()
+        {
+            string query = "SELECT * FROM ARTICULO";
+            SqlCommand comando = new SqlCommand(query, conexion);
+            SqlDataAdapter adaptador = new SqlDataAdapter();
+            adaptador.SelectCommand = comando;
+            DataTable tabla = new DataTable();
+            adaptador.Fill(tabla);
+            dtgIngreso.DataSource = tabla;
         }
         private void cargarCategoria()
         {
@@ -43,26 +54,6 @@ namespace ListaCapemi
             foreach (DataRow dr in dt.Rows)
             {
                 cboCategoria.Items.Add(dr["CATEGORIA"].ToString());
-            }
-            conexion.Close();
-
-        }
-        private void cargarMarca()
-        {
-
-            cboMarca.Items.Clear();
-            conexion.Open();
-            cmd2 = conexion.CreateCommand();
-            cmd2.CommandType = CommandType.Text;
-            cmd2.CommandText = "SELECT * FROM MARCA";
-            cmd2.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd2);
-            da.Fill(dt);
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                cboMarca.Items.Add(dr["MARCA"].ToString());
             }
             conexion.Close();
 
@@ -86,7 +77,33 @@ namespace ListaCapemi
             }
             conexion.Close();
 
+           
+
+
         }
+        private void cargarMarca()
+        {
+
+            cboMarca.Items.Clear();
+            conexion.Open();
+            cmd2 = conexion.CreateCommand();
+            cmd2.CommandType = CommandType.Text;
+            cmd2.CommandText = "SELECT * FROM MARCA";
+            cmd2.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd2);
+            da.Fill(dt);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                cboMarca.Items.Add(dr["MARCA"].ToString());
+            }
+            conexion.Close();
+
+        }
+        #endregion
+        #region Eventos Formulario
+
         private void btnFoto_Click(object sender, EventArgs e)
         {
             OpenFileDialog file = new OpenFileDialog();
@@ -97,38 +114,23 @@ namespace ListaCapemi
                 pbIngresoArticulo.Image = Image.FromFile(file.FileName);
             }
         }
-        private void cargar()
-        {
-            string query = "SELECT * FROM ARTICULO";
-            SqlCommand comando = new SqlCommand(query, conexion);
-            SqlDataAdapter adaptador = new SqlDataAdapter();
-
-            adaptador.SelectCommand = comando;
-
-            DataTable tabla = new DataTable();
-
-            adaptador.Fill(tabla);
-            dtgIngreso.DataSource = tabla;
-
-
-        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            Datos.Insert(txtCod.Text, txtDesc.Text, Convert.ToDateTime(dtpFecha.Text), txtOem.Text, txtMarca.Text,
-                txtModelo.Text, txtDiamE.Text, txtDiamI.Text, txtLargoE.Text, txtLargoI.Text, ConvertImage.ImageToByteArray(pbIngresoArticulo.Image),
-                Convert.ToInt32(txtAño.Text), txtPrecio.Text, Convert.ToInt32(txtCate.Text), Convert.ToInt32(txtGru.Text));
+            Datos.Insert(txtCod.Text, txtDesc.Text, Convert.ToDateTime(dtpFecha.Text), txtOem.Text,txtModelo.Text, txtDiamE.Text, 
+                txtDiamI.Text, txtLargoE.Text, txtLargoI.Text, ConvertImage.ImageToByteArray(pbIngresoArticulo.Image),
+                Convert.ToInt32(txtAño.Text), txtPrecio.Text, Convert.ToInt32(txtCate.Text), Convert.ToInt32(txtGru.Text),
+                Convert.ToInt32(txtMarca.Text));
             this.cargar();
 
         }
-
         private void cboGrupo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cmd1 = new SqlCommand("SELECT * FROM GRUPO where GRUPO = '" + cboGrupo.Text + "'", conexion);
+            cmd3 = new SqlCommand("SELECT * FROM GRUPO where GRUPO = '" + cboGrupo.Text + "'", conexion);
 
             conexion.Open();
-            cmd1.ExecuteNonQuery();
+            cmd3.ExecuteNonQuery();
             SqlDataReader dr;
-            dr = cmd1.ExecuteReader();
+            dr = cmd3.ExecuteReader();
             while (dr.Read())
             {
                 string idMaq = (string)dr["ID_GRUPO"].ToString();
@@ -139,35 +141,15 @@ namespace ListaCapemi
 
             conexion.Close();
         }
-
-        private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cmd = new SqlCommand("SELECT * FROM MARCA where MARCA = '" + cboCategoria.Text + "'", conexion);
-
-            conexion.Open();
-            cmd.ExecuteNonQuery();
-            SqlDataReader dr;
-            dr = cmd.ExecuteReader();
-            while (dr.Read())
-            {
-                string idMaq = (string)dr["ID_MARCA"].ToString();
-                txtMarca.Text = idMaq;
-
-
-            }
-
-            conexion.Close();
-        }
-
         private void cboCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            cmd = new SqlCommand("SELECT * FROM CATEGORIAS where CATEGORIA = '" + cboCategoria.Text + "'", conexion);
+            cmd4 = new SqlCommand("SELECT * FROM CATEGORIAS where CATEGORIA = '" + cboCategoria.Text + "'", conexion);
 
             conexion.Open();
-            cmd.ExecuteNonQuery();
+            cmd4.ExecuteNonQuery();
             SqlDataReader dr;
-            dr = cmd.ExecuteReader();
+            dr = cmd4.ExecuteReader();
             while (dr.Read())
             {
                 string idMaq = (string)dr["ID_CATEGORIA"].ToString();
@@ -178,5 +160,26 @@ namespace ListaCapemi
 
             conexion.Close();
         }
+        private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmd5 = new SqlCommand("SELECT * FROM MARCA where MARCA = '" + cboMarca.Text + "'", conexion);
+
+            conexion.Open();
+            cmd5.ExecuteNonQuery();
+            SqlDataReader dr;
+            dr = cmd5.ExecuteReader();
+            while (dr.Read())
+            {
+                string idMaq = (string)dr["ID_MARCA"].ToString();
+                txtMarca.Text = idMaq;
+
+
+            }
+
+            conexion.Close();
+        }
+        #endregion
+
     }
+    
 }

@@ -68,7 +68,7 @@ namespace ListaCapemi
         private void grillaDos()
         {
             dgArticulos2.ReadOnly = true;
-            sql1 = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=1  AND CODIGO='" + codigo + "'";
+            sql1 = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE MARCA.ID_MARCA=ARTICULO.ID_MARCA AND ID_GRUPO=1  AND CODIGO='" + codigo + "'";
             cmd1 = new SqlCommand(sql1, conn);
             da1 = new SqlDataAdapter();
             da1.SelectCommand = cmd1;
@@ -79,7 +79,7 @@ namespace ListaCapemi
         }
         private void metodoApertura()
         {
-            sql4 = "select TOP 1 OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=1";
+            sql4 = "select TOP 1 OEM_,MODELO,ANIO,MARCA from ARTICULO,MARCA WHERE MARCA.ID_MARCA=ARTICULO.ID_MARCA AND ID_GRUPO=1";
             cmd4 = new SqlCommand(sql4, conn);
             da4 = new SqlDataAdapter(cmd4);
             da4.SelectCommand = cmd4;
@@ -143,7 +143,7 @@ namespace ListaCapemi
         private void RegistroTabla()
         {
             int registro=0;
-            registro = dgArticulos.RowCount;
+            registro = dgArticulos.RowCount-1;
             txtRegis.Text = registro.ToString(); 
         }
 
