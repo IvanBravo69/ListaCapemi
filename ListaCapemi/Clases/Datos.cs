@@ -10,36 +10,26 @@ using System.Configuration;
 
 namespace ListaCapemi
 {
-
+        
 
     class Datos
     {
-
-        
-
-        public static DataTable Cargar()
+        private DBConexion cone = new DBConexion();
+        SqlCommand coman = new SqlCommand();
+        public  DataTable Cargar()
         {
-           
+            
             string query = "SELECT CODIGO FROM ARTICULO";
-            SqlCommand comando = new SqlCommand(query,DBConexion.ObtnerCOnexion());
+            coman= new SqlCommand(query,cone.AbrirConexion());
             SqlDataAdapter adaptador = new SqlDataAdapter();
-
-            adaptador.SelectCommand = comando;
-
+            adaptador.SelectCommand = coman;
             DataTable tabla = new DataTable();
-
             adaptador.Fill(tabla);
-
             return tabla;
-
-
-
-           
-
+                                         
         }
-
-
-        public static void Insert(string codigo, string descrip, DateTime lanza, string oem ,
+        
+        /*public void Insert(string codigo, string descrip, DateTime lanza, string oem ,
             string modelo, string diamE, string diamIn, string largoEx, string largoInt,byte[] foto,
             int anio, string precio,int cate,int grupo,int marca)
         {
@@ -50,7 +40,7 @@ namespace ListaCapemi
                     "[DIAM_EXT],[DIAM_INT],[LARGO_EXT],[LARGO_INT],[FOTO_ART],[ANIO],[PRECIO],[ID_CATEGORIA],[ID_GRUPO],[ID_MARCA])" +
                     " VALUES(@CODIGO,@DESCRIPCION,@LANZAMIENTO,@OEM_,@MODELO,@DIAM_EXT,@DIAM_INT,@LARGO_EXT," +
                     "@LARGO_IN,@FOTO_ART,@ANIO,@PRECIO,@CATEGORIA,@GRUPO,@MARCA)";
-                SqlCommand cmd = new SqlCommand(query, DBConexion.ObtnerCOnexion());
+                SqlCommand cmd = new SqlCommand(query, cone.AbrirConexion());
 
                 cmd.Parameters.AddWithValue("@CODIGO", codigo);
                 cmd.Parameters.AddWithValue("@DESCRIPCION", descrip);
@@ -68,19 +58,17 @@ namespace ListaCapemi
                 cmd.Parameters.AddWithValue("@GRUPO", grupo);
                 cmd.Parameters.AddWithValue("@MARCA", marca);
 
-
-
                 try
                 {
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Registro Ingresado con Exito...");
-                    DBConexion.ObtnerCOnexion().Close();
+                    cone.CerrarConexion();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
             }
-        }
+        }*/
     }
 }

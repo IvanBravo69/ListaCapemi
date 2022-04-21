@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ListaCapemi.Clases;
 
 namespace ListaCapemi
 {
@@ -17,6 +18,11 @@ namespace ListaCapemi
         //Data Source=localhost;Initial Catalog=ListaVenta;Integrated Security=True
         SqlConnection conexion = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
         SqlCommand cmd,cmd1,cmd2,cmd3,cmd4,cmd5;
+        CE_IngresoArticulos objetoCN = new CE_IngresoArticulos();
+
+
+        
+        private bool Editar = false;
 
         public frmIngresoArticulo()
         {
@@ -101,7 +107,35 @@ namespace ListaCapemi
             conexion.Close();
 
         }
+        private void limpiarForm() {
+
+            txtCod.Text = "";
+            txtDesc.Text = "";
+            txtOem.Text = "";
+            cboCategoria.SelectedIndex = -1;
+            cboGrupo.SelectedIndex = -1;
+            cboMarca.SelectedIndex = -1;
+            txtMarca.Text = "";
+            txtModelo.Text = "";
+            txtAño.Text = "";
+            txtPrecio.Text = "";
+            txtDiamE.Text = "";
+            txtDiamI.Text = "";
+            txtLargoE.Text = "";
+            txtLargoI.Text = "";
+            dtpFecha.Text = "2000/01/01";
+            pbIngresoArticulo.Image =Image.FromFile("F:\\Respaldo\\Héctor\\Fotos\\SinImagen.JPG");
+
+
+        }
+
+        private void btnAgregarMarca_Click(object sender, EventArgs e)
+        {
+            Forms.Otros.Marcas ma = new Forms.Otros.Marcas();
+            ma.Show();
+        }
         #endregion
+
         #region Eventos Formulario
 
         private void btnFoto_Click(object sender, EventArgs e)
@@ -116,11 +150,26 @@ namespace ListaCapemi
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            Datos.Insert(txtCod.Text, txtDesc.Text, Convert.ToDateTime(dtpFecha.Text), txtOem.Text,txtModelo.Text, txtDiamE.Text, 
+            //INSERTAR
+            if (Editar == false)
+            {
+                try
+                {
+                    objetoCN.CE_InsertarArticulo(txtCod.Text, txtDesc.Text, Convert.ToDateTime(dtpFecha.Text), txtOem.Text, txtModelo.Text, txtDiamE.Text,
                 txtDiamI.Text, txtLargoE.Text, txtLargoI.Text, ConvertImage.ImageToByteArray(pbIngresoArticulo.Image),
                 Convert.ToInt32(txtAño.Text), txtPrecio.Text, Convert.ToInt32(txtCate.Text), Convert.ToInt32(txtGru.Text),
                 Convert.ToInt32(txtMarca.Text));
-            this.cargar();
+                    MessageBox.Show("Se inserto correctamente");
+                    cargar();
+                    limpiarForm();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo insertar los datos por: " + ex);
+                }
+            }
+
+
 
         }
         private void cboGrupo_SelectedIndexChanged(object sender, EventArgs e)

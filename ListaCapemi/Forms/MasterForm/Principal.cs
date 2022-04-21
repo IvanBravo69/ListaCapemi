@@ -16,6 +16,14 @@ namespace ListaCapemi
     {
         SqlConnection conexion = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
 
+    
+        frmListaLiviana listaL = new frmListaLiviana();
+        frmListaPesados listaP = new frmListaPesados();
+        frmListaCompleta listaCom = new frmListaCompleta();
+        frmIngresoArticulo Ing = new frmIngresoArticulo();
+        frmLanzamientos lz = new frmLanzamientos();
+        frmEmpresa em = new frmEmpresa();
+        frmContacto cont = new frmContacto();
 
         public frmPrincipal()
         {
@@ -25,52 +33,57 @@ namespace ListaCapemi
             lblLineaLiviana.Hide();
            // btnAdmiArt.Hide();
             btnVentas.Hide();
-           // this.CargarCbo();
             this.cargarGrupo();
        
         }
-
         private void CargarCbo()
         {
-            SqlCommand comando_Clave = new SqlCommand("SELECT ID_ARTICULO,MARCA FROM ARTICULO",DBConexion.ObtnerCOnexion());
-            
+            SqlCommand comando_Clave = new SqlCommand("SELECT ID_ARTICULO,MARCA FROM ARTICULO",conexion);
             SqlDataReader registro_Clave = comando_Clave.ExecuteReader();
             while (registro_Clave.Read())
             {
-                cboGrupo.Items.Add(registro_Clave["MARCA"]).ToString();
-              
+                cboGrupo.Items.Add(registro_Clave["MARCA"]).ToString();        
+            }            
+        }
+        private void cargarGrupo()
+         {
+                    cboGrupo.Items.Clear();
+                    conexion.Open();
+                    SqlCommand cmd = conexion.CreateCommand();
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "SELECT * FROM GRUPO";
+                    cmd.ExecuteNonQuery();
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
 
-            }
-           
-
-
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        cboGrupo.Items.Add(dr["GRUPO"].ToString());
+                    }
+                    conexion.Close();
         }
         private void btnLiv_Click(object sender, EventArgs e)
         {
-            frmListaLiviana listaL= new frmListaLiviana();
-            listaL.Show();
-            
-        }
+            try
+            {
+                listaL.Show();
+            }
+            catch
+            {
+                return;
+            }
 
+                                    
+        }
         private void btnPes_Click(object sender, EventArgs e)
         {
-            frmListaPesados listaP = new frmListaPesados();
             listaP.Show();
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            frmListaLiviana listaL = new frmListaLiviana();
-            listaL.Show();
-        }
-
-        //EVENTOS MOUSE
-
         private void btnFerr_MouseMove(object sender, MouseEventArgs e)
         {
             lbltextoArticulo.Show();
-            lbltextoArticulo.Text = "LINEA FERROVIARIA";
-            
+            lbltextoArticulo.Text = "LINEA FERROVIARIA";            
         }
         private void btnLiv_MouseMove(object sender, MouseEventArgs e)
                 {   
@@ -95,32 +108,10 @@ namespace ListaCapemi
             lblLineaPesada.Show();
             lblLineaPesada.Text = "LINEA PESADA";
         }
-        private void cargarGrupo()
-        {
-
-            cboGrupo.Items.Clear();
-            conexion.Open();
-            SqlCommand cmd = conexion.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM GRUPO";
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                cboGrupo.Items.Add(dr["GRUPO"].ToString());
-            }
-            conexion.Close();
-
-        }
-
+        
         private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             SqlCommand cmd1 = new SqlCommand("SELECT * FROM GRUPO where GRUPO = '" + cboGrupo.Text + "'", conexion);
-
             conexion.Open();
             cmd1.ExecuteNonQuery();
             SqlDataReader dr = cmd1.ExecuteReader();
@@ -128,46 +119,30 @@ namespace ListaCapemi
             {
                 string idMaq = (string)dr["ID_GRUPO"].ToString();
                 txtGrupo.Text = idMaq;
-
-
             }
-
             conexion.Close();
-
         }
         private void btnVentas_Click(object sender, EventArgs e)
-        {
-            frmListaCompleta listaCom = new frmListaCompleta();
+        {            
             listaCom.Show();
         }
-
         private void btnAdmiArt_Click(object sender, EventArgs e)
-        {
-            frmIngresoArticulo Ing = new frmIngresoArticulo();
+        {            
             Ing.Show();
         }
-
         private void btnLanzamiento_Click(object sender, EventArgs e)
-        {
-            frmLanzamientos lz = new frmLanzamientos();
+        {            
             lz.Show();
         }
-
         private void btnEmpresa_Click(object sender, EventArgs e)
-        {
-            frmEmpresa em = new frmEmpresa();
+        {            
             em.Show();
         }
-
         private void btnMensaje_Click(object sender, EventArgs e)
-        {
-            frmContacto cont = new frmContacto();
+        {            
             cont.Show();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }

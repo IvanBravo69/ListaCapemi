@@ -13,6 +13,7 @@ namespace ListaCapemi
 {
     public partial class frmListaCompleta : Form
     {
+        private DBConexion conn = new DBConexion();
         public frmListaCompleta()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace ListaCapemi
         private void cargar()
         {
             string query = "SELECT CODIGO,FOTO_ART,OEM_,DESCRIPCION,MARCA,MODELO,ANIO,PRECIO,DIAM_EXT,DIAM_INT,LARGO_EXT,LARGO_INT FROM ARTICULO";
-            SqlCommand comando = new SqlCommand(query, DBConexion.ObtnerCOnexion());
+            SqlCommand comando = new SqlCommand(query, conn.AbrirConexion());
             SqlDataAdapter adaptador = new SqlDataAdapter();
 
             adaptador.SelectCommand = comando;

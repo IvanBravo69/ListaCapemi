@@ -15,9 +15,8 @@ namespace ListaCapemi
     public partial class frmListaLiviana : Form
     {
         #region Declariacion Variables
-        SqlConnection conn = DBConexion.ObtnerCOnexion();
-        int codigo;
-        string sql, sql1, sql2, sql3,sql4;
+        private DBConexion conn = new DBConexion();
+        string sql, sql1, sql2, sql3,sql4, codigo;
         SqlCommand cmd, cmd1, cmd2, cmd3,cmd4;
         SqlDataAdapter da, da1, da2, da3,da4;
         DataTable dt, dt1,dt3;
@@ -44,10 +43,12 @@ namespace ListaCapemi
          }
         private void SetearGrilla2()
         {
-            DataGridViewColumn column4 = dgArticulos2.Columns[2];
-            column4.Width = 250;
-            DataGridViewColumn column5 = dgArticulos2.Columns[0];
-            column5.Width = 130;
+            DataGridViewColumn column4 = dgArticulos2.Columns[0];
+            column4.Width = 130;
+            DataGridViewColumn column5 = dgArticulos2.Columns[2];
+            column5.Width = 250;
+            DataGridViewColumn column6 = dgArticulos2.Columns[3];
+            column6.Width = 120;
         }
         #endregion
         #region Metodos
@@ -56,7 +57,7 @@ namespace ListaCapemi
             dgArticulos.ReadOnly = true;
             sql =("select CODIGO,DESCRIPCION,CATEGORIAS.CATEGORIA from ARTICULO,CATEGORIAS " +
                 "WHERE CATEGORIAS.ID_CATEGORIA=ARTICULO.ID_CATEGORIA AND ID_GRUPO=1");
-            cmd = new SqlCommand(sql, conn);
+            cmd = new SqlCommand(sql, conn.AbrirConexion());
             da = new SqlDataAdapter(cmd);
             da.SelectCommand = cmd;
             dt = new DataTable();
@@ -68,8 +69,8 @@ namespace ListaCapemi
         private void grillaDos()
         {
             dgArticulos2.ReadOnly = true;
-            sql1 = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE MARCA.ID_MARCA=ARTICULO.ID_MARCA AND ID_GRUPO=1  AND CODIGO='" + codigo + "'";
-            cmd1 = new SqlCommand(sql1, conn);
+            sql1 = "select OEM_ as 'OEM',ANIO as 'AÑO',MODELO,MARCA from ARTICULO,MARCA WHERE MARCA.ID_MARCA=ARTICULO.ID_MARCA AND ID_GRUPO=1 AND CODIGO='" + codigo + "'";
+            cmd1 = new SqlCommand(sql1, conn.AbrirConexion());
             da1 = new SqlDataAdapter();
             da1.SelectCommand = cmd1;
             dt1 = new DataTable();
@@ -79,8 +80,9 @@ namespace ListaCapemi
         }
         private void metodoApertura()
         {
-            sql4 = "select TOP 1 OEM_,MODELO,ANIO,MARCA from ARTICULO,MARCA WHERE MARCA.ID_MARCA=ARTICULO.ID_MARCA AND ID_GRUPO=1";
-            cmd4 = new SqlCommand(sql4, conn);
+            sql4 = "select TOP 1 OEM_ AS 'OEM',ANIO as 'AÑO',MODELO,MARCA from ARTICULO,MARCA" +
+                " WHERE MARCA.ID_MARCA=ARTICULO.ID_MARCA AND ID_GRUPO=1";
+            cmd4 = new SqlCommand(sql4, conn.AbrirConexion());
             da4 = new SqlDataAdapter(cmd4);
             da4.SelectCommand = cmd4;
             dt3 = new DataTable();
@@ -96,7 +98,7 @@ namespace ListaCapemi
             {
                 sql2 = "select FOTO_ART from ARTICULO WHERE CODIGO='" + codigo + "'";
 
-                cmd2 = new SqlCommand(sql2,conn);
+                cmd2 = new SqlCommand(sql2, conn.AbrirConexion());
                 da2 = new SqlDataAdapter(cmd2);
                 DataSet ds = new DataSet("ARTICULO");
 
@@ -118,7 +120,7 @@ namespace ListaCapemi
                 int idFoto = Convert.ToInt32(row.Cells["CODIGO"].Value);
 
                 sql3 = "select FOTO_ART from ARTICULO WHERE CODIGO='" + idFoto + "'";
-                cmd3 = new SqlCommand(sql3, conn);
+                cmd3 = new SqlCommand(sql3, conn.AbrirConexion());
                 da3 = new SqlDataAdapter(cmd3);
                 DataSet ds = new DataSet("ARTICULO");
                 byte[] MisDatos = new byte[0];
@@ -138,7 +140,7 @@ namespace ListaCapemi
         private void capturDato()
         {
             DataGridViewRow row = dgArticulos.CurrentRow;
-            codigo = Convert.ToInt32(row.Cells["CODIGO"].Value);
+            codigo = row.Cells["CODIGO"].Value.ToString();
          }
         private void RegistroTabla()
         {
@@ -151,13 +153,12 @@ namespace ListaCapemi
         #region Eventos de la Grilla
         private void btnVolverLiv_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
         private void dgArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
-            {
-                
+            {                
                 this.capturDato();
                 this.grillaDos();
                 this.ObtenerFoto();
@@ -165,10 +166,8 @@ namespace ListaCapemi
             }
             catch (Exception)
             {
-
                 return;
-            }
-            
+            }            
         }
         private void btnVolverLiv_MouseMove(object sender, MouseEventArgs e)
         {
@@ -186,14 +185,14 @@ namespace ListaCapemi
         private void dgArticulos_KeyDown(object sender, KeyEventArgs e)
         {
                 DataGridViewRow row = dgArticulos.CurrentRow;
-                codigo = Convert.ToInt32(row.Cells["CODIGO"].Value);
+                codigo = row.Cells["CODIGO"].Value.ToString();
                 this.grillaDos();
                 this.ObtenerFoto();
           }
         private void dgArticulos_KeyUp(object sender, KeyEventArgs e)
         {
                 DataGridViewRow row = dgArticulos.CurrentRow;
-                codigo = Convert.ToInt32(row.Cells["CODIGO"].Value);
+                codigo = row.Cells["CODIGO"].Value.ToString();
                 this.grillaDos();
                 this.ObtenerFoto();
            }

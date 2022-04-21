@@ -15,7 +15,8 @@ namespace ListaCapemi
     public partial class frmLanzamientos : Form
     {
         #region Declariacion Variables
-        SqlConnection conn = DBConexion.ObtnerCOnexion();
+        private DBConexion conn = new DBConexion();
+        
         int codigo;
         string sql, sql1, sql2, sql3;
         SqlCommand cmd, cmd1,cmd3, cmd4;
@@ -63,7 +64,7 @@ namespace ListaCapemi
 
             dtLanza.ReadOnly = true;
             sql = "select CODIGO,DESCRIPCION,LANZAMIENTO from ARTICULO  ORDER BY LANZAMIENTO DESC";
-            cmd = new SqlCommand(sql, conn);
+            cmd = new SqlCommand(sql, conn.AbrirConexion());
             da = new SqlDataAdapter(cmd);
             da.SelectCommand = cmd;
             dt = new DataTable();
@@ -76,7 +77,7 @@ namespace ListaCapemi
         private void metodoApertura()
         {
             sql1 = "select TOP 1 OEM_,MODELO,ANIO from ARTICULO";
-            cmd1 = new SqlCommand(sql1, conn);
+            cmd1 = new SqlCommand(sql1, conn.AbrirConexion());
             da1 = new SqlDataAdapter();
             da1.SelectCommand = cmd1;
             dt1 = new DataTable();
@@ -92,7 +93,7 @@ namespace ListaCapemi
 
             dtLanza1.ReadOnly = true;
             sql2 = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE CODIGO='" + codigo + "'";
-            cmd4 = new SqlCommand(sql2, conn);
+            cmd4 = new SqlCommand(sql2, conn.AbrirConexion());
             da4 = new SqlDataAdapter(cmd4);
             da4.SelectCommand = cmd4;
             dt3 = new DataTable();
@@ -107,7 +108,7 @@ namespace ListaCapemi
             try
             {
                 sql3 = "select FOTO_ART from ARTICULO WHERE CODIGO='" + codigo + "'";
-                SqlCommand command = new SqlCommand(sql3,conn);
+                SqlCommand command = new SqlCommand(sql3, conn.AbrirConexion());
                 SqlDataAdapter dp = new SqlDataAdapter(command);
                 DataSet ds = new DataSet("ARTICULO");
 
@@ -129,7 +130,7 @@ namespace ListaCapemi
                 int idFoto = Convert.ToInt32(row.Cells["CODIGO"].Value);
 
                 sql3 = "select FOTO_ART from ARTICULO WHERE CODIGO='" + idFoto + "'";
-                cmd3 = new SqlCommand(sql3, conn);
+                cmd3 = new SqlCommand(sql3, conn.AbrirConexion());
                 da3 = new SqlDataAdapter(cmd3);
                 DataSet ds = new DataSet("ARTICULO");
                 byte[] MisDatos = new byte[0];

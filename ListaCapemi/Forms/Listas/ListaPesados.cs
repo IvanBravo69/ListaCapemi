@@ -16,7 +16,7 @@ namespace ListaCapemi
     {
 
         #region Declariacion Variables
-        SqlConnection conn = DBConexion.ObtnerCOnexion();
+        private DBConexion conn = new DBConexion();
         int codigo;
         string sql,sql1,sql2,sql3;
         SqlCommand cmd, cmd1,cmd3, cmd4;
@@ -64,8 +64,9 @@ namespace ListaCapemi
         #region Metodos
         private void metodoApertura()
         {
-            sql = "select TOP 1 OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=2";
-            cmd4 = new SqlCommand(sql, conn);
+            sql = "select TOP 1 OEM_,ANIO as 'AÑO',MODELO,MARCA from ARTICULO,MARCA" +
+                " WHERE MARCA.ID_MARCA=ARTICULO.ID_MARCA AND ID_GRUPO=2";
+            cmd4 = new SqlCommand(sql, conn.AbrirConexion());
             da4 = new SqlDataAdapter(cmd4);
             da4.SelectCommand = cmd4;
             dt3 = new DataTable();
@@ -80,7 +81,7 @@ namespace ListaCapemi
             dgArticulosPesado.ReadOnly = true;
             sql1=("select CODIGO,DESCRIPCION,CATEGORIAS.CATEGORIA from ARTICULO,CATEGORIAS " +
                 "WHERE CATEGORIAS.ID_CATEGORIA=ARTICULO.ID_CATEGORIA AND ID_GRUPO=2");
-            cmd = new SqlCommand(sql1, conn);
+            cmd = new SqlCommand(sql1, conn.AbrirConexion());
             da = new SqlDataAdapter(cmd);
             da.SelectCommand = cmd;
             dt = new DataTable();
@@ -91,8 +92,9 @@ namespace ListaCapemi
         private void grillaDosP()
         {
             dgArticulosPesado2.ReadOnly = true;
-            sql2 = "select OEM_,MARCA,MODELO,ANIO from ARTICULO WHERE ID_GRUPO=2 AND CODIGO='" + codigo + "'";
-            cmd1 = new SqlCommand(sql2, conn);
+            sql2 = "select OEM_,ANIO as 'AÑO',MODELO,MARCA from ARTICULO,MARCA " +
+                "WHERE MARCA.ID_MARCA=ARTICULO.ID_MARCA AND ID_GRUPO=2 AND CODIGO='" + codigo + "'";
+            cmd1 = new SqlCommand(sql2, conn.AbrirConexion());
             da1 = new SqlDataAdapter();
             da1.SelectCommand = cmd1;
             dt1 = new DataTable();
@@ -106,7 +108,7 @@ namespace ListaCapemi
             int idFoto = Convert.ToInt32(row.Cells["CODIGO"].Value);
 
             sql3 = "select FOTO_ART from ARTICULO WHERE CODIGO='" + idFoto + "'";
-            cmd3 = new SqlCommand(sql3, conn);
+            cmd3 = new SqlCommand(sql3, conn.AbrirConexion());
             da3 = new SqlDataAdapter(cmd3);
             DataSet ds = new DataSet("ARTICULO");
             byte[] MisDatos = new byte[0];
@@ -138,7 +140,7 @@ namespace ListaCapemi
         }
         private void btnVolverLiv_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
         #endregion
         #region Eventos de la Grilla

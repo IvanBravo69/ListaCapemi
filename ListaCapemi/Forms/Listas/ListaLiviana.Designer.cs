@@ -55,9 +55,10 @@
             btnVolverLiv.BackColor = System.Drawing.Color.Transparent;
             btnVolverLiv.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVolverLiv.BackgroundImage")));
             btnVolverLiv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            btnVolverLiv.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             btnVolverLiv.FlatAppearance.BorderSize = 0;
-            btnVolverLiv.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            btnVolverLiv.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSkyBlue;
+            btnVolverLiv.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            btnVolverLiv.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             btnVolverLiv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             btnVolverLiv.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             btnVolverLiv.ForeColor = System.Drawing.Color.Transparent;
@@ -126,7 +127,7 @@
             this.dgArticulos2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgArticulos2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
             this.dgArticulos2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -163,6 +164,7 @@
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             this.dgArticulos2.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgArticulos2.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgArticulos2.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgArticulos2.RowTemplate.Height = 70;
             this.dgArticulos2.RowTemplate.ReadOnly = true;
             this.dgArticulos2.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -206,7 +208,7 @@
             // 
             this.txtRegis.AutoSize = true;
             this.txtRegis.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegis.Location = new System.Drawing.Point(686, 415);
+            this.txtRegis.Location = new System.Drawing.Point(681, 415);
             this.txtRegis.Name = "txtRegis";
             this.txtRegis.Size = new System.Drawing.Size(14, 16);
             this.txtRegis.TabIndex = 11;
@@ -228,7 +230,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.CancelButton = btnVolverLiv;
             this.ClientSize = new System.Drawing.Size(849, 617);
+            this.ControlBox = false;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtRegis);
             this.Controls.Add(this.txtVolver);
@@ -239,6 +243,7 @@
             this.Controls.Add(btnVolverLiv);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListaLiviana";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista Liviana";
             this.Load += new System.EventHandler(this.ListaLiviana_Load);

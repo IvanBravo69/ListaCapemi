@@ -89,9 +89,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Articulo.cs" />
+    <Compile Include="Clases\CD_IngresoArticulos.cs" />
+    <Compile Include="Clases\CE_IngresoArticulos.cs" />
+    <Compile Include="Clases\CE_Marca.cs" />
     <Compile Include="Clases\ConvertImage.cs" />
     <Compile Include="Clases\Datos.cs" />
     <Compile Include="Clases\DBConexion.cs" />
+    <Compile Include="Clases\CD_Marca.cs" />
     <Compile Include="Forms\Listas\ListaBusqueda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +113,12 @@
     </Compile>
     <Compile Include="Forms\Otros\Empresa.Designer.cs">
       <DependentUpon>Empresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Otros\Marcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Otros\Marcas.Designer.cs">
+      <DependentUpon>Marcas.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Otros\IngresoArticulo.cs">
       <SubType>Form</SubType>
@@ -156,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Otros\Empresa.resx">
       <DependentUpon>Empresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Otros\Marcas.resx">
+      <DependentUpon>Marcas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Otros\IngresoArticulo.resx">
       <DependentUpon>IngresoArticulo.cs</DependentUpon>

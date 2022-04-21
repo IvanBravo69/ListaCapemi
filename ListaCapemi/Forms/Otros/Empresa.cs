@@ -13,6 +13,9 @@ namespace ListaCapemi
 {
     public partial class frmEmpresa : Form
     {
+
+        SqlConnection conexion = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
+        
         public frmEmpresa()
         {
             InitializeComponent();
@@ -23,7 +26,6 @@ namespace ListaCapemi
         {
             if (keyData == Keys.Escape)
             {
-
                 DialogResult dialogResult = MessageBox.Show("Esta seguro de cerrar la ventana", "Atencion", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -33,8 +35,6 @@ namespace ListaCapemi
                 {
                     //do something else
                 }
-
-
             }
             return base.ProcessCmdKey(ref msg, keyData);
 
@@ -42,7 +42,7 @@ namespace ListaCapemi
         private void cargar()
         {
             string query = "SELECT OBSERVACIONES AS 'A.GIACOMELLI S.A' FROM EMPRESA";
-            SqlCommand comando = new SqlCommand(query, DBConexion.ObtnerCOnexion());
+            SqlCommand comando = new SqlCommand(query,conexion);
             SqlDataAdapter adaptador = new SqlDataAdapter();
 
             adaptador.SelectCommand = comando;
@@ -60,7 +60,8 @@ namespace ListaCapemi
         }
         private void cargarText()
         {
-            SqlCommand com = new SqlCommand("SELECT [DIRECCION],[LOCALIDAD],[MAIL],[TELEFONO] FROM EMPRESA", DBConexion.ObtnerCOnexion());
+            conexion.Open();
+            SqlCommand com = new SqlCommand("SELECT [DIRECCION],[LOCALIDAD],[MAIL],[TELEFONO] FROM EMPRESA", conexion);
             SqlDataReader reg = com.ExecuteReader();
             if (reg.Read())
             {
@@ -70,7 +71,7 @@ namespace ListaCapemi
                 txtTel.Text = reg["TELEFONO"].ToString();
             }
 
-
+            conexion.Close();
 
         }
     }
