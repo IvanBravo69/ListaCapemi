@@ -14,7 +14,7 @@ namespace ListaCapemi.Forms.Otros
     public partial class Marcas : Form
     {
         CE_Marca objetoCN = new CE_Marca();
-       
+        private DBConexion conn = new DBConexion();
         private bool Editar = false;
 
         public Marcas()
@@ -39,6 +39,8 @@ namespace ListaCapemi.Forms.Otros
             txtMarcaIns.Text = "";
          
         }
+
+
         private void btnGrabarMarca_Click(object sender, EventArgs e)
         {
             //INSERTAR
@@ -56,6 +58,12 @@ namespace ListaCapemi.Forms.Otros
                     MessageBox.Show("No se pudo insertar los datos por: " + ex);
                 }
             }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+         
         }
     }
 }

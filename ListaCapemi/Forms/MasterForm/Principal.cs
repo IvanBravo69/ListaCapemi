@@ -14,9 +14,8 @@ namespace ListaCapemi
 {
     public partial class frmPrincipal : Form
     {
+        #region Declaracion Variables
         SqlConnection conexion = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
-
-    
         frmListaLiviana listaL = new frmListaLiviana();
         frmListaPesados listaP = new frmListaPesados();
         frmListaCompleta listaCom = new frmListaCompleta();
@@ -24,7 +23,8 @@ namespace ListaCapemi
         frmLanzamientos lz = new frmLanzamientos();
         frmEmpresa em = new frmEmpresa();
         frmContacto cont = new frmContacto();
-
+        #endregion
+        #region InicioPrograma
         public frmPrincipal()
         {
             InitializeComponent();
@@ -34,8 +34,9 @@ namespace ListaCapemi
            // btnAdmiArt.Hide();
             btnVentas.Hide();
             this.cargarGrupo();
-       
         }
+        #endregion
+        #region Metodos Programas
         private void CargarCbo()
         {
             SqlCommand comando_Clave = new SqlCommand("SELECT ID_ARTICULO,MARCA FROM ARTICULO",conexion);
@@ -63,65 +64,8 @@ namespace ListaCapemi
                     }
                     conexion.Close();
         }
-        private void btnLiv_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                listaL.Show();
-            }
-            catch
-            {
-                return;
-            }
-
-                                    
-        }
-        private void btnPes_Click(object sender, EventArgs e)
-        {
-            listaP.Show();
-        }
-        private void btnFerr_MouseMove(object sender, MouseEventArgs e)
-        {
-            lbltextoArticulo.Show();
-            lbltextoArticulo.Text = "LINEA FERROVIARIA";            
-        }
-        private void btnLiv_MouseMove(object sender, MouseEventArgs e)
-                {   
-                    lblLineaLiviana.Show();
-                    lblLineaLiviana.Text = "LINEA LIVIANA";
-                }
-        private void btnFerr_MouseLeave(object sender, EventArgs e)
-        {
-            lbltextoArticulo.Hide();
-        }
-        private void btnLiv_MouseLeave(object sender, EventArgs e)
-        {
-            lblLineaLiviana.Hide();
-            
-        }
-        private void btnPes_MouseLeave(object sender, EventArgs e)
-        {
-            lblLineaPesada.Hide();
-        }
-        private void btnPes_MouseMove(object sender, MouseEventArgs e)
-        {
-            lblLineaPesada.Show();
-            lblLineaPesada.Text = "LINEA PESADA";
-        }
-        
-        private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SqlCommand cmd1 = new SqlCommand("SELECT * FROM GRUPO where GRUPO = '" + cboGrupo.Text + "'", conexion);
-            conexion.Open();
-            cmd1.ExecuteNonQuery();
-            SqlDataReader dr = cmd1.ExecuteReader();
-            while (dr.Read())
-            {
-                string idMaq = (string)dr["ID_GRUPO"].ToString();
-                txtGrupo.Text = idMaq;
-            }
-            conexion.Close();
-        }
+        #endregion
+        #region Botones Formulario
         private void btnVentas_Click(object sender, EventArgs e)
         {            
             listaCom.Show();
@@ -142,7 +86,68 @@ namespace ListaCapemi
         {            
             cont.Show();
         }
+        #endregion
+        #region Eventos
+        private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SqlCommand cmd1 = new SqlCommand("SELECT * FROM GRUPO where GRUPO = '" + cboGrupo.Text + "'", conexion);
+            conexion.Open();
+            cmd1.ExecuteNonQuery();
+            SqlDataReader dr = cmd1.ExecuteReader();
+            while (dr.Read())
+            {
+                string idMaq = (string)dr["ID_GRUPO"].ToString();
+                txtGrupo.Text = idMaq;
+            }
+            conexion.Close();
+        }
 
+        private void btnLiv_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                listaL.Show();
+            }
+            catch
+            {
+                return;
+            }
 
+                                    
+        }
+        private void btnLiv_MouseMove(object sender, MouseEventArgs e)
+        {   
+           lblLineaLiviana.Show();
+           lblLineaLiviana.Text = "Linea Liviana";
+           
+        }
+        private void btnLiv_MouseLeave(object sender, EventArgs e)
+        {
+            lblLineaLiviana.Hide();
+            
+        }
+        private void btnPes_Click(object sender, EventArgs e)
+        {
+            listaP.Show();
+        }
+        private void btnPes_MouseLeave(object sender, EventArgs e)
+        {
+            lblLineaPesada.Hide();
+        }
+        private void btnPes_MouseMove(object sender, MouseEventArgs e)
+        {
+            lblLineaPesada.Show();
+            lblLineaPesada.Text = "LINEA PESADA";
+        }        
+        private void btnFerr_MouseLeave(object sender, EventArgs e)
+        {
+            lbltextoArticulo.Hide();
+        }
+        private void btnFerr_MouseMove(object sender, MouseEventArgs e)
+        {
+            lbltextoArticulo.Show();
+            lbltextoArticulo.Text = "LINEA FERROVIARIA";            
+        }
+        #endregion
     }
 }

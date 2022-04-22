@@ -9,19 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ListaCapemi.Clases;
+using MetroFramework.Forms;
+using MetroFramework;
 
 namespace ListaCapemi
 {
-    public partial class frmIngresoArticulo : Form
+    public partial class frmIngresoArticulo : MetroForm
     {
         //Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True
         //Data Source=localhost;Initial Catalog=ListaVenta;Integrated Security=True
         SqlConnection conexion = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
         SqlCommand cmd,cmd1,cmd2,cmd3,cmd4,cmd5;
         CE_IngresoArticulos objetoCN = new CE_IngresoArticulos();
-
-
-        
+        string idCate,idGru,idMarca;
         private bool Editar = false;
 
         public frmIngresoArticulo()
@@ -31,7 +31,7 @@ namespace ListaCapemi
             this.cargarCategoria();
             this.cargarGrupo();
             this.cargarMarca();
-
+            this.limpiarForm();
         }
         #region Metodos
         private void cargar()
@@ -112,10 +112,9 @@ namespace ListaCapemi
             txtCod.Text = "";
             txtDesc.Text = "";
             txtOem.Text = "";
-            cboCategoria.SelectedIndex = -1;
-            cboGrupo.SelectedIndex = -1;
-            cboMarca.SelectedIndex = -1;
-            txtMarca.Text = "";
+            cboCategoria.SelectedIndex = 0;
+            cboGrupo.SelectedIndex = 0;
+            cboMarca.SelectedIndex = 0;            
             txtModelo.Text = "";
             txtAño.Text = "";
             txtPrecio.Text = "";
@@ -128,16 +127,14 @@ namespace ListaCapemi
 
 
         }
-
         private void btnAgregarMarca_Click(object sender, EventArgs e)
         {
             Forms.Otros.Marcas ma = new Forms.Otros.Marcas();
             ma.Show();
+
         }
         #endregion
-
         #region Eventos Formulario
-
         private void btnFoto_Click(object sender, EventArgs e)
         {
             OpenFileDialog file = new OpenFileDialog();
@@ -157,8 +154,7 @@ namespace ListaCapemi
                 {
                     objetoCN.CE_InsertarArticulo(txtCod.Text, txtDesc.Text, Convert.ToDateTime(dtpFecha.Text), txtOem.Text, txtModelo.Text, txtDiamE.Text,
                 txtDiamI.Text, txtLargoE.Text, txtLargoI.Text, ConvertImage.ImageToByteArray(pbIngresoArticulo.Image),
-                Convert.ToInt32(txtAño.Text), txtPrecio.Text, Convert.ToInt32(txtCate.Text), Convert.ToInt32(txtGru.Text),
-                Convert.ToInt32(txtMarca.Text));
+                Convert.ToInt32(txtAño.Text), txtPrecio.Text, Convert.ToInt32(idCate), Convert.ToInt32(idGru), Convert.ToInt32(idMarca));
                     MessageBox.Show("Se inserto correctamente");
                     cargar();
                     limpiarForm();
@@ -182,10 +178,8 @@ namespace ListaCapemi
             dr = cmd3.ExecuteReader();
             while (dr.Read())
             {
-                string idMaq = (string)dr["ID_GRUPO"].ToString();
-                txtGru.Text = idMaq;
-
-
+                idGru = (string)dr["ID_GRUPO"].ToString();
+                
             }
 
             conexion.Close();
@@ -201,10 +195,7 @@ namespace ListaCapemi
             dr = cmd4.ExecuteReader();
             while (dr.Read())
             {
-                string idMaq = (string)dr["ID_CATEGORIA"].ToString();
-                txtCate.Text = idMaq;
-
-
+                idCate = (string)dr["ID_CATEGORIA"].ToString();             
             }
 
             conexion.Close();
@@ -212,17 +203,14 @@ namespace ListaCapemi
         private void cboMarca_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmd5 = new SqlCommand("SELECT * FROM MARCA where MARCA = '" + cboMarca.Text + "'", conexion);
-
+            
             conexion.Open();
             cmd5.ExecuteNonQuery();
             SqlDataReader dr;
             dr = cmd5.ExecuteReader();
             while (dr.Read())
             {
-                string idMaq = (string)dr["ID_MARCA"].ToString();
-                txtMarca.Text = idMaq;
-
-
+                 idMarca = (string)dr["ID_MARCA"].ToString();                
             }
 
             conexion.Close();

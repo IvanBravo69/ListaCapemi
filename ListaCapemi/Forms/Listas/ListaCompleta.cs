@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 
 namespace ListaCapemi
 {
-    public partial class frmListaCompleta : Form
+    public partial class frmListaCompleta : MetroForm
     {
         private DBConexion conn = new DBConexion();
         public frmListaCompleta()

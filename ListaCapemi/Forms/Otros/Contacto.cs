@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 
 namespace ListaCapemi.Forms.Otros
 {
-    public partial class frmContacto : Form
+    public partial class frmContacto : MetroForm
     {
         public frmContacto()
         {
@@ -27,7 +28,15 @@ namespace ListaCapemi.Forms.Otros
 
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                this.Hide(); return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
 
+        }
         private void btnEnviarMail_Click(object sender, EventArgs e)
         {
             System.Net.Mail.MailMessage mmsg = new System.Net.Mail.MailMessage();

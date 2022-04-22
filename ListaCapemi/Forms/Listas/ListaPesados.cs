@@ -173,21 +173,10 @@ namespace ListaCapemi
 {
             if (keyData == Keys.Escape)
             {
-
-                DialogResult dialogResult = MessageBox.Show("Esta seguro de cerrar la ventana", "Atencion", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    Close();
-                }
-                else if (dialogResult == DialogResult.No)
-                {
-                    //do something else
-                }
-
-
+                this.Hide(); return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
-           
+
         }
         private void dgArticulosPesado_KeyDown(object sender, KeyEventArgs e)
         {

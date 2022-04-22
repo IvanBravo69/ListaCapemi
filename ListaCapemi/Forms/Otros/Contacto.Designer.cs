@@ -46,7 +46,7 @@
             // 
             // btnEnviarMail
             // 
-            this.btnEnviarMail.Location = new System.Drawing.Point(157, 358);
+            this.btnEnviarMail.Location = new System.Drawing.Point(156, 345);
             this.btnEnviarMail.Name = "btnEnviarMail";
             this.btnEnviarMail.Size = new System.Drawing.Size(86, 34);
             this.btnEnviarMail.TabIndex = 6;
@@ -58,7 +58,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(55, 78);
+            this.label1.Location = new System.Drawing.Point(54, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 1;
@@ -66,14 +66,14 @@
             // 
             // txtNombreContacto
             // 
-            this.txtNombreContacto.Location = new System.Drawing.Point(139, 76);
+            this.txtNombreContacto.Location = new System.Drawing.Point(138, 63);
             this.txtNombreContacto.Name = "txtNombreContacto";
             this.txtNombreContacto.Size = new System.Drawing.Size(188, 20);
             this.txtNombreContacto.TabIndex = 1;
             // 
             // txtEmpresaContacto
             // 
-            this.txtEmpresaContacto.Location = new System.Drawing.Point(139, 114);
+            this.txtEmpresaContacto.Location = new System.Drawing.Point(138, 101);
             this.txtEmpresaContacto.Name = "txtEmpresaContacto";
             this.txtEmpresaContacto.Size = new System.Drawing.Size(188, 20);
             this.txtEmpresaContacto.TabIndex = 2;
@@ -82,7 +82,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(51, 118);
+            this.label2.Location = new System.Drawing.Point(50, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 17);
             this.label2.TabIndex = 3;
@@ -91,7 +91,7 @@
             // txtEmailContacto
             // 
             this.txtEmailContacto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
-            this.txtEmailContacto.Location = new System.Drawing.Point(139, 152);
+            this.txtEmailContacto.Location = new System.Drawing.Point(138, 139);
             this.txtEmailContacto.Name = "txtEmailContacto";
             this.txtEmailContacto.Size = new System.Drawing.Size(188, 20);
             this.txtEmailContacto.TabIndex = 3;
@@ -100,7 +100,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(67, 156);
+            this.label3.Location = new System.Drawing.Point(66, 143);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 17);
             this.label3.TabIndex = 5;
@@ -110,7 +110,7 @@
             // 
             this.txtTelContacto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             this.txtTelContacto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTelContacto.Location = new System.Drawing.Point(139, 190);
+            this.txtTelContacto.Location = new System.Drawing.Point(138, 177);
             this.txtTelContacto.Name = "txtTelContacto";
             this.txtTelContacto.Size = new System.Drawing.Size(188, 20);
             this.txtTelContacto.TabIndex = 4;
@@ -119,7 +119,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(50, 192);
+            this.label4.Location = new System.Drawing.Point(49, 179);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 17);
             this.label4.TabIndex = 7;
@@ -128,10 +128,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
+            this.pictureBox1.Location = new System.Drawing.Point(-3, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(404, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(423, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
@@ -140,7 +140,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(50, 234);
+            this.label5.Location = new System.Drawing.Point(49, 221);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 17);
             this.label5.TabIndex = 10;
@@ -149,7 +149,7 @@
             // txtMensaje
             // 
             this.txtMensaje.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMensaje.Location = new System.Drawing.Point(139, 234);
+            this.txtMensaje.Location = new System.Drawing.Point(138, 221);
             this.txtMensaje.MaximumSize = new System.Drawing.Size(200, 200);
             this.txtMensaje.Multiline = true;
             this.txtMensaje.Name = "txtMensaje";
@@ -161,8 +161,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(402, 404);
+            this.ClientSize = new System.Drawing.Size(420, 389);
             this.Controls.Add(this.txtMensaje);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox1);
@@ -176,7 +175,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEnviarMail);
             this.Name = "frmContacto";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contacto";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

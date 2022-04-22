@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework;
 
 namespace ListaCapemi
 {
@@ -154,21 +155,7 @@ namespace ListaCapemi
         private void btnVolverLiv_Click(object sender, EventArgs e)
         {
             this.Hide();
-        }
-        private void dgArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {                
-                this.capturDato();
-                this.grillaDos();
-                this.ObtenerFoto();
-
-            }
-            catch (Exception)
-            {
-                return;
-            }            
-        }
+        }        
         private void btnVolverLiv_MouseMove(object sender, MouseEventArgs e)
         {
             
@@ -181,6 +168,20 @@ namespace ListaCapemi
 
             txtVolver.Hide();
             
+        }
+        private void dgArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                this.capturDato();
+                this.grillaDos();
+                this.ObtenerFoto();
+
+            }
+            catch (Exception)
+            {
+                return;
+            }
         }
         private void dgArticulos_KeyDown(object sender, KeyEventArgs e)
         {
@@ -200,18 +201,7 @@ namespace ListaCapemi
         {
             if (keyData == Keys.Escape)
             {
-
-                DialogResult dialogResult = MessageBox.Show("Esta seguro de cerrar la ventana", "Atencion", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    Close();
-                }
-                else if (dialogResult == DialogResult.No)
-                {
-                    //do something else
-                }
-
-
+                this.Hide(); return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
 

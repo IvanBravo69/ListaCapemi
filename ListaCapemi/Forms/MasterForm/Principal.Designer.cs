@@ -63,7 +63,9 @@
             this.btnLiv.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLiv.BackgroundImage")));
             this.btnLiv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnLiv.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLiv.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnLiv.FlatAppearance.BorderSize = 0;
+            this.btnLiv.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnLiv.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnLiv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLiv.ForeColor = System.Drawing.Color.Transparent;
@@ -141,6 +143,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(249, 239);
             this.label3.Name = "label3";
@@ -151,6 +154,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(264, 410);
             this.label4.Name = "label4";
@@ -161,6 +165,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(243, 353);
             this.label5.Name = "label5";
@@ -274,6 +279,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(249, 296);
             this.label2.Name = "label2";
@@ -310,11 +316,12 @@
             this.btnEmpresa.BackColor = System.Drawing.Color.Transparent;
             this.btnEmpresa.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEmpresa.BackgroundImage")));
             this.btnEmpresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEmpresa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEmpresa.FlatAppearance.BorderSize = 0;
             this.btnEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmpresa.Location = new System.Drawing.Point(740, 39);
+            this.btnEmpresa.Location = new System.Drawing.Point(744, 39);
             this.btnEmpresa.Name = "btnEmpresa";
-            this.btnEmpresa.Size = new System.Drawing.Size(45, 33);
+            this.btnEmpresa.Size = new System.Drawing.Size(32, 26);
             this.btnEmpresa.TabIndex = 27;
             this.btnEmpresa.UseVisualStyleBackColor = false;
             this.btnEmpresa.Click += new System.EventHandler(this.btnEmpresa_Click);
@@ -324,11 +331,12 @@
             this.btnMensaje.BackColor = System.Drawing.Color.Transparent;
             this.btnMensaje.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMensaje.BackgroundImage")));
             this.btnMensaje.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMensaje.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMensaje.FlatAppearance.BorderSize = 0;
             this.btnMensaje.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMensaje.Location = new System.Drawing.Point(678, 47);
+            this.btnMensaje.Location = new System.Drawing.Point(706, 43);
             this.btnMensaje.Name = "btnMensaje";
-            this.btnMensaje.Size = new System.Drawing.Size(39, 25);
+            this.btnMensaje.Size = new System.Drawing.Size(24, 18);
             this.btnMensaje.TabIndex = 28;
             this.btnMensaje.UseVisualStyleBackColor = false;
             this.btnMensaje.Click += new System.EventHandler(this.btnMensaje_Click);
@@ -340,9 +348,9 @@
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(616, 39);
+            this.button3.Location = new System.Drawing.Point(669, 39);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(35, 33);
+            this.button3.Size = new System.Drawing.Size(24, 26);
             this.button3.TabIndex = 29;
             this.button3.UseVisualStyleBackColor = false;
             // 
@@ -364,7 +372,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.AutoScroll = true;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(802, 593);
@@ -394,6 +404,7 @@
             this.Controls.Add(this.btnFerr);
             this.Controls.Add(this.btnPes);
             this.Controls.Add(this.btnLiv);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

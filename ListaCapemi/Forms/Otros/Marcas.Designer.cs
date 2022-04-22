@@ -33,6 +33,7 @@
             this.btnGrabarMarca = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMarcaIns = new System.Windows.Forms.TextBox();
+            this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMarca)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,9 +57,9 @@
             // 
             // btnGrabarMarca
             // 
-            this.btnGrabarMarca.Location = new System.Drawing.Point(245, 157);
+            this.btnGrabarMarca.Location = new System.Drawing.Point(245, 107);
             this.btnGrabarMarca.Name = "btnGrabarMarca";
-            this.btnGrabarMarca.Size = new System.Drawing.Size(93, 51);
+            this.btnGrabarMarca.Size = new System.Drawing.Size(93, 45);
             this.btnGrabarMarca.TabIndex = 39;
             this.btnGrabarMarca.Text = "Grabar";
             this.btnGrabarMarca.UseVisualStyleBackColor = true;
@@ -80,11 +81,23 @@
             this.txtMarcaIns.Size = new System.Drawing.Size(100, 20);
             this.txtMarcaIns.TabIndex = 47;
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(245, 170);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(93, 38);
+            this.btnSalir.TabIndex = 48;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // Marcas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(360, 220);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.txtMarcaIns);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
@@ -107,5 +120,6 @@
         private System.Windows.Forms.Button btnGrabarMarca;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtMarcaIns;
+        private System.Windows.Forms.Button btnSalir;
     }
 }
