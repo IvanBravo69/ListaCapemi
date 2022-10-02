@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ListaCapemi.Clases
 {
@@ -28,33 +29,33 @@ namespace ListaCapemi.Clases
             return tabla;
 
         }
-        public void InsertarArticulos(string codigo, string descrip, DateTime lanza, string oem,
-            string modelo, string diamE, string diamIn, string largoEx, string largoInt, byte[] foto,
-            int anio, string precio, int cate, int grupo, int marca)
+        public void InsertarArticulos(string codigo, string descrip, DateTime lanza, string oem,string modelo, PictureBox foto,
+             int cate, int grupo, int marca)
         {
             //PROCEDIMNIENTO
 
-            cmd.Connection = conexion.AbrirConexion();
+            cmd = new SqlCommand("Insert into ARTICULO(CODIGO,DESCRIPCION,LANZAMIENTO,OEM_,MODELO,FOTO_ART,ID_CATEGORIA,ID_GRUPO,ID_MARCA)" +
+                " VALUES(@codigo, @descripcion, @lanzamiento, @oem_, @modelo, @foto, @id_cate, @id_grupo, @id_marca)", conexion.AbrirConexion());
+
+            /*cmd.Connection = conexion.AbrirConexion();
             cmd.CommandText = "InsertarArticulos";
-            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandType = CommandType.StoredProcedure;*/
 
 
-            cmd.Parameters.AddWithValue("@CODIGO", codigo);
-            cmd.Parameters.AddWithValue("@DESCRIPCION", descrip);
-            cmd.Parameters.AddWithValue("@LANZAMIENTO", lanza);
-            cmd.Parameters.AddWithValue("@OEM_", oem);
-            cmd.Parameters.AddWithValue("@MODELO", modelo);
-            cmd.Parameters.AddWithValue("@DIAM_EXT", diamE);
-            cmd.Parameters.AddWithValue("@DIAM_INT", diamIn);
-            cmd.Parameters.AddWithValue("@LARGO_EXT", largoEx);
-            cmd.Parameters.AddWithValue("@LARGO_IN", largoInt);
-            cmd.Parameters.Add("@FOTO_ART", System.Data.SqlDbType.Image).Value = foto;
-            cmd.Parameters.AddWithValue("@ANIO", anio);
-            cmd.Parameters.AddWithValue("@PRECIO", precio);
-            cmd.Parameters.AddWithValue("@CATEGORIA", cate);
-            cmd.Parameters.AddWithValue("@GRUPO", grupo);
-            cmd.Parameters.AddWithValue("@MARCA", marca);
-                                          
+            cmd.Parameters.AddWithValue("@codigo", codigo);
+            cmd.Parameters.AddWithValue("@descripcion", descrip);
+            cmd.Parameters.AddWithValue("@lanzamiento", lanza);
+            cmd.Parameters.AddWithValue("@oem_", oem);
+            cmd.Parameters.AddWithValue("@modelo", modelo);
+            cmd.Parameters.Add("@foto", SqlDbType.Image);            
+            cmd.Parameters.AddWithValue("@id_cate", cate);
+            cmd.Parameters.AddWithValue("@id_grupo", grupo);
+            cmd.Parameters.AddWithValue("@id_marca", marca);
+
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            foto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            cmd.Parameters["@foto"].Value = ms.GetBuffer();
+
             cmd.ExecuteNonQuery();
 
             cmd.Parameters.Clear();

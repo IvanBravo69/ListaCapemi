@@ -16,14 +16,13 @@ namespace ListaCapemi
 {
     public partial class frmIngresoArticulo : MetroForm
     {
-        //Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True
+        //Data Source=DESKTOP-3MG0KL8;Initial Catalog=ListaVenta;Integrated Security=True
         //Data Source=localhost;Initial Catalog=ListaVenta;Integrated Security=True
-        SqlConnection conexion = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
+        SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-3MG0KL8;Initial Catalog=ListaVenta;Integrated Security=True");
         SqlCommand cmd,cmd1,cmd2,cmd3,cmd4,cmd5;
         CE_IngresoArticulos objetoCN = new CE_IngresoArticulos();
         string idCate,idGru,idMarca;
         private bool Editar = false;
-
         public frmIngresoArticulo()
         {
             InitializeComponent();
@@ -116,12 +115,6 @@ namespace ListaCapemi
             cboGrupo.SelectedIndex = 0;
             cboMarca.SelectedIndex = 0;            
             txtModelo.Text = "";
-            txtAño.Text = "";
-            txtPrecio.Text = "";
-            txtDiamE.Text = "";
-            txtDiamI.Text = "";
-            txtLargoE.Text = "";
-            txtLargoI.Text = "";
             dtpFecha.Text = "2000/01/01";
             pbIngresoArticulo.Image =Image.FromFile("F:\\Respaldo\\Héctor\\Fotos\\SinImagen.JPG");
 
@@ -137,13 +130,28 @@ namespace ListaCapemi
         #region Eventos Formulario
         private void btnFoto_Click(object sender, EventArgs e)
         {
-            OpenFileDialog file = new OpenFileDialog();
+            try
+            {
+
+                openFileDialog1.ShowDialog();
+                if (openFileDialog1.FileName.Equals("") == false)
+                {
+                    pbIngresoArticulo.Load(openFileDialog1.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo cargar la imagen: " + ex.ToString());
+            }
+
+
+            /*OpenFileDialog file = new OpenFileDialog();
             file.Filter = "Archivo JPG|*.jpg";
 
             if (file.ShowDialog() == DialogResult.OK)
             {
                 pbIngresoArticulo.Image = Image.FromFile(file.FileName);
-            }
+            }*/
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -152,9 +160,8 @@ namespace ListaCapemi
             {
                 try
                 {
-                    objetoCN.CE_InsertarArticulo(txtCod.Text, txtDesc.Text, Convert.ToDateTime(dtpFecha.Text), txtOem.Text, txtModelo.Text, txtDiamE.Text,
-                txtDiamI.Text, txtLargoE.Text, txtLargoI.Text, ConvertImage.ImageToByteArray(pbIngresoArticulo.Image),
-                Convert.ToInt32(txtAño.Text), txtPrecio.Text, Convert.ToInt32(idCate), Convert.ToInt32(idGru), Convert.ToInt32(idMarca));
+                    objetoCN.CE_InsertarArticulo(txtCod.Text, txtDesc.Text, Convert.ToDateTime(dtpFecha.Text), txtOem.Text, txtModelo.Text,
+                       pbIngresoArticulo, Convert.ToInt32(idCate), Convert.ToInt32(idGru), Convert.ToInt32(idMarca));
                     MessageBox.Show("Se inserto correctamente");
                     cargar();
                     limpiarForm();

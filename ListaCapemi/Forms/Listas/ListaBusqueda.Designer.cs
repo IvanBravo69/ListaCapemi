@@ -28,41 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListaBusqueda));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.dgArticulosBusqueda = new System.Windows.Forms.DataGridView();
+            this.dgArticuloBusqueda2 = new System.Windows.Forms.DataGridView();
+            this.pbusqueda = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.dgArticulosBusqueda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgArticuloBusqueda2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbusqueda)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgArticulosBusqueda
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(1, 105);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(845, 297);
-            this.dataGridView1.TabIndex = 0;
+            this.dgArticulosBusqueda.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgArticulosBusqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgArticulosBusqueda.Location = new System.Drawing.Point(1, 120);
+            this.dgArticulosBusqueda.Name = "dgArticulosBusqueda";
+            this.dgArticulosBusqueda.Size = new System.Drawing.Size(845, 297);
+            this.dgArticulosBusqueda.TabIndex = 0;
             // 
-            // dataGridView2
+            // dgArticuloBusqueda2
             // 
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(1, 408);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(620, 182);
-            this.dataGridView2.TabIndex = 1;
+            this.dgArticuloBusqueda2.BackgroundColor = System.Drawing.Color.White;
+            this.dgArticuloBusqueda2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgArticuloBusqueda2.Location = new System.Drawing.Point(1, 408);
+            this.dgArticuloBusqueda2.Name = "dgArticuloBusqueda2";
+            this.dgArticuloBusqueda2.Size = new System.Drawing.Size(620, 182);
+            this.dgArticuloBusqueda2.TabIndex = 1;
             // 
-            // pictureBox1
+            // pbusqueda
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pictureBox1.Location = new System.Drawing.Point(627, 408);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(219, 182);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.pbusqueda.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pbusqueda.Location = new System.Drawing.Point(627, 408);
+            this.pbusqueda.Name = "pbusqueda";
+            this.pbusqueda.Size = new System.Drawing.Size(219, 182);
+            this.pbusqueda.TabIndex = 2;
+            this.pbusqueda.TabStop = false;
             // 
             // ListaBusqueda
             // 
@@ -70,22 +72,25 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(847, 591);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.pbusqueda);
+            this.Controls.Add(this.dgArticuloBusqueda2);
+            this.Controls.Add(this.dgArticulosBusqueda);
             this.Name = "ListaBusqueda";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListaBusqueda";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Load += new System.EventHandler(this.ListaBusqueda_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgArticulosBusqueda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgArticuloBusqueda2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbusqueda)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataGridView dgArticulosBusqueda;
+        private System.Windows.Forms.DataGridView dgArticuloBusqueda2;
+        private System.Windows.Forms.PictureBox pbusqueda;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -65,8 +65,7 @@ namespace ListaCapemi
             column4.Width = 100;
             DataGridViewColumn column5 = dtLanza1.Columns[2];
             column5.Width = 280;
-            DataGridViewColumn column6 = dtLanza1.Columns[3];
-            column6.Width = 100;
+
 
         }
         #endregion
@@ -85,7 +84,7 @@ namespace ListaCapemi
         }
         private void metodoApertura()
         {
-            sql1 = "select TOP 1 OEM_,MARCA,MODELO,ANIO from ARTICULO,MARCA WHERE MARCA.ID_MARCA=ARTICULO.ID_MARCA";
+            sql1 = "select TOP 1 OEM_,MARCA,MODELO from ARTICULO,MARCA WHERE MARCA.ID_MARCA=ARTICULO.ID_MARCA";
             cmd1 = new SqlCommand(sql1, conn.AbrirConexion());
             da1 = new SqlDataAdapter();
             da1.SelectCommand = cmd1;
@@ -135,7 +134,7 @@ namespace ListaCapemi
             }
             catch (Exception)
             {
-                DataGridViewRow row = dtLanza.CurrentRow;
+                /*DataGridViewRow row = dtLanza.CurrentRow;
                 int idFoto = Convert.ToInt32(row.Cells["CODIGO"].Value);
 
                 sql3 = "select FOTO_ART from ARTICULO WHERE CODIGO='" + idFoto + "'";
@@ -152,7 +151,7 @@ namespace ListaCapemi
 
                 MemoryStream ms = new MemoryStream(MisDatos);
 
-                pbLanza.Image = Image.FromStream(ms);
+                pbLanza.Image = Image.FromStream(ms);*/
             }
 
         }

@@ -33,12 +33,10 @@
             this.btnPes = new System.Windows.Forms.Button();
             this.btnFerr = new System.Windows.Forms.Button();
             this.txtBuscarArticulo = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cboModeloPrincipal = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnBuscarPrincipal = new System.Windows.Forms.Button();
             this.lbltextoArticulo = new System.Windows.Forms.Label();
             this.lblLineaLiviana = new System.Windows.Forms.Label();
             this.lblLineaPesada = new System.Windows.Forms.Label();
@@ -119,72 +117,54 @@
             // 
             // txtBuscarArticulo
             // 
-            this.txtBuscarArticulo.Location = new System.Drawing.Point(342, 171);
+            this.txtBuscarArticulo.Location = new System.Drawing.Point(328, 171);
             this.txtBuscarArticulo.Name = "txtBuscarArticulo";
-            this.txtBuscarArticulo.Size = new System.Drawing.Size(188, 20);
+            this.txtBuscarArticulo.Size = new System.Drawing.Size(266, 20);
             this.txtBuscarArticulo.TabIndex = 4;
             // 
-            // comboBox3
+            // cboModeloPrincipal
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(342, 406);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(188, 21);
-            this.comboBox3.TabIndex = 8;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(342, 350);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(188, 21);
-            this.comboBox4.TabIndex = 7;
+            this.cboModeloPrincipal.FormattingEnabled = true;
+            this.cboModeloPrincipal.Location = new System.Drawing.Point(328, 350);
+            this.cboModeloPrincipal.Name = "cboModeloPrincipal";
+            this.cboModeloPrincipal.Size = new System.Drawing.Size(266, 21);
+            this.cboModeloPrincipal.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(249, 239);
+            this.label3.Location = new System.Drawing.Point(235, 239);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 16);
             this.label3.TabIndex = 11;
             this.label3.Text = "Grupo  :";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(264, 410);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 16);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Año  :";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(243, 353);
+            this.label5.Location = new System.Drawing.Point(229, 353);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 16);
             this.label5.TabIndex = 12;
             this.label5.Text = "Modelo :";
             // 
-            // button1
+            // btnBuscarPrincipal
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(142)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(597, 406);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 26);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnBuscarPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(73)))), ((int)(((byte)(142)))));
+            this.btnBuscarPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarPrincipal.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarPrincipal.ForeColor = System.Drawing.Color.Transparent;
+            this.btnBuscarPrincipal.Location = new System.Drawing.Point(396, 402);
+            this.btnBuscarPrincipal.Name = "btnBuscarPrincipal";
+            this.btnBuscarPrincipal.Size = new System.Drawing.Size(142, 26);
+            this.btnBuscarPrincipal.TabIndex = 14;
+            this.btnBuscarPrincipal.Text = "Buscar";
+            this.btnBuscarPrincipal.UseVisualStyleBackColor = false;
+            this.btnBuscarPrincipal.Click += new System.EventHandler(this.btnBuscarPrincipal_Click);
             // 
             // lbltextoArticulo
             // 
@@ -228,15 +208,15 @@
             // cboGrupo
             // 
             this.cboGrupo.FormattingEnabled = true;
-            this.cboGrupo.Location = new System.Drawing.Point(342, 238);
+            this.cboGrupo.Location = new System.Drawing.Point(328, 238);
             this.cboGrupo.Name = "cboGrupo";
-            this.cboGrupo.Size = new System.Drawing.Size(188, 21);
+            this.cboGrupo.Size = new System.Drawing.Size(266, 21);
             this.cboGrupo.TabIndex = 18;
             this.cboGrupo.SelectedIndexChanged += new System.EventHandler(this.cboMarca_SelectedIndexChanged);
             // 
             // btnVentas
             // 
-            this.btnVentas.Location = new System.Drawing.Point(597, 287);
+            this.btnVentas.Location = new System.Drawing.Point(736, 186);
             this.btnVentas.Name = "btnVentas";
             this.btnVentas.Size = new System.Drawing.Size(54, 25);
             this.btnVentas.TabIndex = 19;
@@ -246,7 +226,7 @@
             // 
             // btnAdmiArt
             // 
-            this.btnAdmiArt.Location = new System.Drawing.Point(597, 230);
+            this.btnAdmiArt.Location = new System.Drawing.Point(736, 129);
             this.btnAdmiArt.Name = "btnAdmiArt";
             this.btnAdmiArt.Size = new System.Drawing.Size(54, 25);
             this.btnAdmiArt.TabIndex = 21;
@@ -260,9 +240,9 @@
             this.btnLanzamiento.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLanzamiento.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLanzamiento.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnLanzamiento.Location = new System.Drawing.Point(597, 168);
+            this.btnLanzamiento.Location = new System.Drawing.Point(537, 39);
             this.btnLanzamiento.Name = "btnLanzamiento";
-            this.btnLanzamiento.Size = new System.Drawing.Size(142, 25);
+            this.btnLanzamiento.Size = new System.Drawing.Size(114, 25);
             this.btnLanzamiento.TabIndex = 22;
             this.btnLanzamiento.Text = "Lanzamientos";
             this.btnLanzamiento.UseVisualStyleBackColor = false;
@@ -271,9 +251,9 @@
             // cboMarca
             // 
             this.cboMarca.FormattingEnabled = true;
-            this.cboMarca.Location = new System.Drawing.Point(342, 294);
+            this.cboMarca.Location = new System.Drawing.Point(328, 294);
             this.cboMarca.Name = "cboMarca";
-            this.cboMarca.Size = new System.Drawing.Size(188, 21);
+            this.cboMarca.Size = new System.Drawing.Size(266, 21);
             this.cboMarca.TabIndex = 24;
             // 
             // label2
@@ -281,7 +261,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(249, 296);
+            this.label2.Location = new System.Drawing.Point(235, 296);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 16);
             this.label2.TabIndex = 23;
@@ -295,7 +275,7 @@
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(276, 162);
+            this.button2.Location = new System.Drawing.Point(262, 162);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(39, 37);
             this.button2.TabIndex = 25;
@@ -305,7 +285,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(342, 198);
+            this.label1.Location = new System.Drawing.Point(326, 198);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 13);
             this.label1.TabIndex = 26;
@@ -356,14 +336,14 @@
             // 
             // txtGrupo
             // 
-            this.txtGrupo.Location = new System.Drawing.Point(537, 238);
+            this.txtGrupo.Location = new System.Drawing.Point(613, 238);
             this.txtGrupo.Name = "txtGrupo";
             this.txtGrupo.Size = new System.Drawing.Size(24, 20);
             this.txtGrupo.TabIndex = 30;
             // 
             // txtMarca
             // 
-            this.txtMarca.Location = new System.Drawing.Point(537, 294);
+            this.txtMarca.Location = new System.Drawing.Point(613, 294);
             this.txtMarca.Name = "txtMarca";
             this.txtMarca.Size = new System.Drawing.Size(24, 20);
             this.txtMarca.TabIndex = 31;
@@ -394,12 +374,10 @@
             this.Controls.Add(this.lblLineaPesada);
             this.Controls.Add(this.lblLineaLiviana);
             this.Controls.Add(this.lbltextoArticulo);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.btnBuscarPrincipal);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.cboModeloPrincipal);
             this.Controls.Add(this.txtBuscarArticulo);
             this.Controls.Add(this.btnFerr);
             this.Controls.Add(this.btnPes);
@@ -417,12 +395,10 @@
         #endregion
         private System.Windows.Forms.Button btnFerr;
         private System.Windows.Forms.TextBox txtBuscarArticulo;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cboModeloPrincipal;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBuscarPrincipal;
         protected System.Windows.Forms.Button btnLiv;
         private System.Windows.Forms.Label lbltextoArticulo;
         private System.Windows.Forms.Label lblLineaLiviana;

@@ -10,7 +10,7 @@ namespace ListaCapemi
 {
     class DBConexion
     {
-        private SqlConnection ConexionV1 = new SqlConnection(@"Data Source=BIVAN\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
+        private SqlConnection ConexionV1 = new SqlConnection(@"Data Source=DESKTOP-3MG0KL8;Initial Catalog=ListaVenta;Integrated Security=True");
 
 
         public SqlConnection AbrirConexion()
@@ -32,7 +32,7 @@ namespace ListaCapemi
      /*   public static SqlConnection ObtnerCOnexion()
         {
             
-                SqlConnection Conn = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
+                SqlConnection Conn = new SqlConnection("Data Source=DESKTOP-3MG0KL8;Initial Catalog=ListaVenta;Integrated Security=True");
                 Conn.Open();
                 return Conn;
             

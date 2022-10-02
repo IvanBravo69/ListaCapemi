@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace ListaCapemi.Forms.Otros
     public partial class Marcas : Form
     {
         CE_Marca objetoCN = new CE_Marca();
-        private DBConexion conn = new DBConexion();
+        private DBConexion conn = new DBConexion();        
         private bool Editar = false;
 
         public Marcas()

@@ -15,7 +15,7 @@ namespace ListaCapemi
     public partial class frmEmpresa : MetroForm
     {
 
-        SqlConnection conexion = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
+        SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-3MG0KL8;Initial Catalog=ListaVenta;Integrated Security=True");
         
         public frmEmpresa()
         {

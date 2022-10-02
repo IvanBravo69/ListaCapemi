@@ -15,7 +15,7 @@ namespace ListaCapemi
     public partial class frmPrincipal : Form
     {
         #region Declaracion Variables
-        SqlConnection conexion = new SqlConnection("Data Source=BIVAN\\CAPEMI_TEST;Initial Catalog=ListaVenta;Integrated Security=True");
+        SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-3MG0KL8;Initial Catalog=ListaVenta;Integrated Security=True");
         frmListaLiviana listaL = new frmListaLiviana();
         frmListaPesados listaP = new frmListaPesados();
         frmListaCompleta listaCom = new frmListaCompleta();
@@ -23,6 +23,8 @@ namespace ListaCapemi
         frmLanzamientos lz = new frmLanzamientos();
         frmEmpresa em = new frmEmpresa();
         frmContacto cont = new frmContacto();
+        internal static string datoArticulo,datoGrupo,datoMarca="";
+        private string dat;
         #endregion
         #region InicioPrograma
         public frmPrincipal()
@@ -31,7 +33,7 @@ namespace ListaCapemi
             lbltextoArticulo.Hide();
             lblLineaPesada.Hide();
             lblLineaLiviana.Hide();
-           // btnAdmiArt.Hide();
+            btnAdmiArt.Show();
             btnVentas.Hide();
             this.cargarGrupo();
         }
@@ -63,6 +65,14 @@ namespace ListaCapemi
                         cboGrupo.Items.Add(dr["GRUPO"].ToString());
                     }
                     conexion.Close();
+        }
+        private void capturarCodigo()
+        {
+            
+            
+            txtGrupo.Text = datoGrupo;
+            txtMarca.Text = datoMarca;
+            
         }
         #endregion
         #region Botones Formulario
@@ -149,5 +159,13 @@ namespace ListaCapemi
             lbltextoArticulo.Text = "LINEA FERROVIARIA";            
         }
         #endregion
+
+        private void btnBuscarPrincipal_Click(object sender, EventArgs e)
+        {
+            capturarCodigo();
+            Forms.Listas.ListaBusqueda lb = new Forms.Listas.ListaBusqueda();
+            lb.Show();
+            
+        }
     }
 }

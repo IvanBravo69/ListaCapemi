@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ListaCapemi.Clases
 {
@@ -22,14 +23,8 @@ namespace ListaCapemi.Clases
                                             string descrip, 
                                             DateTime lanza, 
                                             string oem,
-                                            string modelo, 
-                                            string diamE, 
-                                            string diamIn, 
-                                            string largoEx, 
-                                            string largoInt, 
-                                            byte[] foto,
-                                            int anio, 
-                                            string precio, 
+                                            string modelo,
+                                            PictureBox foto,
                                             int cate, 
                                             int grupo, 
                                             int marca)
@@ -41,13 +36,7 @@ namespace ListaCapemi.Clases
                                              lanza,
                                              oem,
                                              modelo,
-                                             diamE,
-                                             diamIn,
-                                             largoEx,
-                                             largoInt,
                                              foto,
-                                             anio,
-                                             precio,
                                              cate,
                                              grupo,
                                              marca
