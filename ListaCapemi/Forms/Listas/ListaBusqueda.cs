@@ -14,10 +14,10 @@ namespace ListaCapemi.Forms.Listas
     public partial class ListaBusqueda : Form
     {
         private DBConexion conn = new DBConexion();
-        string sql, sql1, sql2, sql3, sql4;
-        SqlCommand cmd, cmd1, cmd2, cmd3, cmd4;
-        SqlDataAdapter da, da1, da2, da3, da4;
-        DataTable dt, dt1, dt3;
+        string sql, sql1;
+        SqlCommand cmd, cmd1;
+        SqlDataAdapter da, da1;
+        DataTable dt, dt1;
 
         private void ListaBusqueda_Load(object sender, EventArgs e)
         {

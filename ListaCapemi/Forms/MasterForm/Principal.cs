@@ -23,8 +23,8 @@ namespace ListaCapemi
         frmLanzamientos lz = new frmLanzamientos();
         frmEmpresa em = new frmEmpresa();
         frmContacto cont = new frmContacto();
-        internal static string datoArticulo,datoGrupo,datoMarca="";
-        private string dat;
+        internal static string datoArticulo,datoGrupo,datoMarca;
+       
         #endregion
         #region InicioPrograma
         public frmPrincipal()
@@ -71,7 +71,7 @@ namespace ListaCapemi
             
             
             txtGrupo.Text = datoGrupo;
-            txtMarca.Text = datoMarca;
+           txtMarca.Text = datoMarca;
             
         }
         #endregion

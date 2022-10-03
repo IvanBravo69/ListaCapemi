@@ -17,7 +17,7 @@ namespace ListaCapemi
 
         #region Declariacion Variables
         private DBConexion conn = new DBConexion();
-        string sql, sql1, sql2, sql3, sql4;
+        string sql, sql1, sql2, sql3;
         internal static string codigo;
         SqlCommand cmd, cmd1, cmd2, cmd3, cmd4;
         SqlDataAdapter da, da1, da2, da3, da4;

@@ -19,8 +19,8 @@ namespace ListaCapemi
         
         
         string sql, sql1, sql2, sql3, codigo;
-        SqlCommand cmd, cmd1,cmd3, cmd4;
-        SqlDataAdapter da, da1,da3, da4;
+        SqlCommand cmd, cmd1,cmd4;
+        SqlDataAdapter da, da1,da4;
         DataTable dt, dt1, dt3;
         #endregion
         #region Inicio Programa
