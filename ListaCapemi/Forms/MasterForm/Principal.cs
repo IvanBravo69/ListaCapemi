@@ -128,7 +128,7 @@ namespace ListaCapemi
         private void btnLiv_MouseMove(object sender, MouseEventArgs e)
         {   
            lblLineaLiviana.Show();
-           lblLineaLiviana.Text = "Linea Liviana";
+           lblLineaLiviana.Text = "LINEA LIVIANA";
            
         }
         private void btnLiv_MouseLeave(object sender, EventArgs e)

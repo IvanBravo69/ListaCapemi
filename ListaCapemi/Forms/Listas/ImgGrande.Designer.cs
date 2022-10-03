@@ -84,9 +84,9 @@
             // 
             // pbImg
             // 
-            this.pbImg.Location = new System.Drawing.Point(12, 12);
+            this.pbImg.Location = new System.Drawing.Point(12, 22);
             this.pbImg.Name = "pbImg";
-            this.pbImg.Size = new System.Drawing.Size(469, 370);
+            this.pbImg.Size = new System.Drawing.Size(469, 360);
             this.pbImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbImg.TabIndex = 0;
             this.pbImg.TabStop = false;
@@ -95,11 +95,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(493, 397);
             this.Controls.Add(this.pbImg);
             this.Name = "ImgGrande";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Zoom";
             ((System.ComponentModel.ISupportInitialize)(this.pbImg)).EndInit();
             this.ResumeLayout(false);

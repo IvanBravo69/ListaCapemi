@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MetroFramework.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace ListaCapemi.Forms.Listas
 {
-    public partial class ImgGrande : Form
+    public partial class ImgGrande : MetroForm
     {
         private DBConexion conn = new DBConexion();
         string sql2;
