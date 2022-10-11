@@ -44,14 +44,6 @@ namespace ListaCapemi
             DataGridViewColumn column1 = dgArticulos.Columns[1];
             column1.Width = 630; 
          }
-
-        private void pbA_Click(object sender, EventArgs e)
-        {
-         
-            Forms.Listas.ImgGrande imgs = new Forms.Listas.ImgGrande();
-            imgs.Show();
-        }
-
         private void SetearGrilla2()
         {
             DataGridViewColumn column4 = dgArticulos2.Columns[0];
@@ -62,8 +54,6 @@ namespace ListaCapemi
             column6.Width = 200;
 
         }
-
-
         #endregion
 
         #region Metodos
@@ -190,7 +180,12 @@ namespace ListaCapemi
             registro = dgArticulos.RowCount-1;
             txtRegis.Text = registro.ToString(); 
         }
-
+        private void pbA_Click(object sender, EventArgs e)
+        {
+         
+            Forms.Listas.ImgGrande imgs = new Forms.Listas.ImgGrande();
+            imgs.Show();
+        }
         #endregion
         #region Eventos de la Grilla
         private void btnVolverLiv_Click(object sender, EventArgs e)
