@@ -18,11 +18,11 @@ namespace ListaCapemi
     {
         #region Declariacion Variables
         private DBConexion conn = new DBConexion();
-        string sql, sql1, sql2,sql4;
+        string sql, sql1, sql2,sql3,sql4;
         internal static string codigo;
-        SqlCommand cmd, cmd1, cmd2,cmd4;
-        SqlDataAdapter da, da1, da2,da4;
-        DataTable dt, dt1,dt3;
+        SqlCommand cmd,cmd1,cmd2,cmd3,cmd4;
+        SqlDataAdapter da,da1,da2,da3,da4;
+        DataTable dt, dt1,dt3,dt4;
         #endregion
         #region Inicio Programa
         public frmListaLiviana()
@@ -85,14 +85,14 @@ namespace ListaCapemi
         }
         private void metodoApertura()
         {
-            sql4 = "select TOP 1 OEM_ AS 'OEM',MODELO,MARCA from ARTICULO,MARCA" +
+            sql2 = "select TOP 1 OEM_ AS 'OEM',MODELO,MARCA from ARTICULO,MARCA" +
                 " WHERE MARCA.ID_MARCA=ARTICULO.ID_MARCA AND ID_GRUPO=1";
-            cmd4 = new SqlCommand(sql4, conn.AbrirConexion());
-            da4 = new SqlDataAdapter(cmd4);
-            da4.SelectCommand = cmd4;
-            dt3 = new DataTable();
-            da4.Fill(dt3);
-            dgArticulos2.DataSource = dt3;
+            cmd2 = new SqlCommand(sql2, conn.AbrirConexion());
+            da2 = new SqlDataAdapter(cmd2);
+            da2.SelectCommand = cmd2;
+            dt2 = new DataTable();
+            da2.Fill(dt2);
+            dgArticulos2.DataSource = dt2;
             this.SetearGrilla2();
             this.ObtenerFotoInicio();
             this.RegistroTabla();
@@ -101,15 +101,15 @@ namespace ListaCapemi
         {
             try
             {
-                sql2 = "select FOTO_ART from ARTICULO WHERE CODIGO='1940/1'";
+                sql3 = "select FOTO_ART from ARTICULO WHERE CODIGO='1940/1'";
 
-                cmd2 = new SqlCommand(sql2, conn.AbrirConexion());
-                da2 = new SqlDataAdapter(cmd2);
+                cmd3 = new SqlCommand(sql3, conn.AbrirConexion());
+                da3 = new SqlDataAdapter(cmd3);
                 DataSet ds = new DataSet("ARTICULO");
 
                 byte[] MisDatos = new byte[0];
 
-                da2.Fill(ds, "ARTICULO");
+                da3.Fill(ds, "ARTICULO");
 
                 DataRow myRow = ds.Tables["ARTICULO"].Rows[0];
 
@@ -128,15 +128,15 @@ namespace ListaCapemi
         {
             try
             {
-                sql2 = "select FOTO_ART from ARTICULO WHERE CODIGO='" + codigo + "'";
+                sql4 = "select FOTO_ART from ARTICULO WHERE CODIGO='" + codigo + "'";
 
-                cmd2 = new SqlCommand(sql2, conn.AbrirConexion());
-                da2 = new SqlDataAdapter(cmd2);
+                cmd4 = new SqlCommand(sql4, conn.AbrirConexion());
+                da4 = new SqlDataAdapter(cmd4);
                 DataSet ds = new DataSet("ARTICULO");
 
                 byte[] MisDatos = new byte[0];
 
-                da2.Fill(ds, "ARTICULO");
+                da4.Fill(ds, "ARTICULO");
 
                 DataRow myRow = ds.Tables["ARTICULO"].Rows[0];
 
